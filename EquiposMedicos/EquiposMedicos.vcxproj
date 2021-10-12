@@ -143,6 +143,7 @@
     <ClCompile Include="cEnums.cpp" />
     <ClCompile Include="cEquipos.cpp" />
     <ClCompile Include="cFecha.cpp" />
+    <ClCompile Include="cListaT.cpp" />
     <ClCompile Include="cMesas_Anestesia.cpp" />
     <ClCompile Include="cRegistros.cpp" />
     <ClCompile Include="cRespiradores.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="cEnums.h" />
     <ClInclude Include="cEquipos.h" />
     <ClInclude Include="cFecha.h" />
+    <ClInclude Include="cListaT.h" />
     <ClInclude Include="cMesas_Anestesia.h" />
     <ClInclude Include="cRegistros.h" />
     <ClInclude Include="cRespiradores.h" />

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "cEnums.h"
 #include "cFecha.h"
+#include "cListaT.h"
 
 using namespace std;
 class cEquipos
@@ -17,7 +18,7 @@ class cEquipos
 	//string Nombre; no se para que
 	float Peso;
 	string Dimenciones;// del tipo 3x5
-	cFecha** Calendario;//lista de las fechas en la que hay que hacer los mantenimientos
+	cListaT<cFecha>* Calendario;//lista de las fechas en la que hay que hacer los mantenimientos
 	
 public:
 	cEquipos();
