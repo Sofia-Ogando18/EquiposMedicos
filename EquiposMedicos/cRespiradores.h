@@ -8,10 +8,12 @@ class cRespiradores :
     bool Alarma_baja_presion;
     bool Alarma_flujo;
     unsigned int Flujo_Configurado;
+    unsigned int Flujo_Salida;
 public:
-    cRespiradores();
+    cRespiradores(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas);
     void MantenimientoPreventivo();
     void MantenimientoCorrectivos();
+    void EncenderAlarmas();
     ~cRespiradores();
 
 };

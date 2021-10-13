@@ -8,9 +8,10 @@ class cElectrograma :
     bool Traficacion;
 
 public:
-    cElectrograma();
+    cElectrograma(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas);
     void MantenimientoPreventivo();
     void MantenimientoCorrectivos();
+    void EncenderAlarmas();
      ~cElectrograma();
 
 };

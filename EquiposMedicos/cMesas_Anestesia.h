@@ -10,9 +10,10 @@ class cMesas_Anestesia :
     int Volumen_flujo;
     float Volumen_flujo_fijado;
 public:
-    cMesas_Anestesia();
+    cMesas_Anestesia(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas);
     void MantenimientoPreventivo();
     void MantenimientoCorrectivos();
+    void EncenderAlarmas();
     ~cMesas_Anestesia();
 };
 
