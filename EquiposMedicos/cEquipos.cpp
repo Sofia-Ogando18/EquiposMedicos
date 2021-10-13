@@ -15,3 +15,16 @@ cEquipos::cEquipos(string dimenciones, Estado estado, string lugaractual, float 
 		fechas = new cListaT<cFecha>();
 	
 }
+
+void cEquipos::Alerta()
+{
+	if (Lugar_Actual != Lugar_Guardado) {
+		cout << "\n El equipo " << to_string(Codigo)<<" no esta en su lugar";
+	}
+}
+
+void cEquipos::Imprimir()
+{
+	cout << "\n Descripcion: " << Descripcion << " Dimensiones: " << Dimenciones << " Peso: " << to_string(Peso) << "\n Estado: " << Estados_to_string(Estado_Equipo) << "Precio: " << to_string(Costo) << "$";
+
+}

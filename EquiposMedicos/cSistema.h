@@ -4,11 +4,12 @@
 class cSistema
 {
 	cListaT <cEquipos>*Lista_Equipos;
+
 public:
 	cSistema(cListaT <cEquipos>* equipos);
 	void Historial();
 	string RastrearEquipo(cEquipos*equipo);
-	void BuscarEquipo(cEquipos*equipo);//lo busca por codigo y despues lo imprime 
+	void BuscarEquipo(int codigo);//lo busca por codigo y despues lo imprime 
 	~cSistema();
 };
 
