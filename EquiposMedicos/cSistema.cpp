@@ -29,11 +29,17 @@ void cSistema::BuscarEquipo(int codigo)
 
 cSistema::~cSistema()
 {
-	delete equipos;
+	delete Lista_Equipos;
+	delete Lista_Registros;
 }
 
 void cSistema::operator+(cEquipos* nuevo)
 {
 	this->Lista_Equipos->Agregar(nuevo);
+}
+
+cListaT<cEquipos>* cSistema::getListaEquipos()
+{
+	return Lista_Equipos;
 }
 

@@ -19,6 +19,7 @@ public:
 	
 	void SetHoy();//cambia la fecha a fecha actual
 	void Cambio_Fecha();
+	int getMes();
 
 	~cFecha();
 };

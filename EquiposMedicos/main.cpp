@@ -77,6 +77,7 @@ int main()//¿Declarar un enum con los lugares posibles?
     
     //Crear un metodo en equipo que cree una lista de fechas para mantenimiento
     //¿Como iniciar las listas de fechas? ¿Hacer un método agregar o asignarle de a uno?
+    delete Hospital;
     return 0;
 }
 

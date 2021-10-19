@@ -7,7 +7,7 @@ class cSistema
 {
 	cListaT <cEquipos>* Lista_Equipos;
 	cFecha Hoy;
-	cListaT<cRegistro>* Lista_Registros;//¿Como agregar los registros?
+	cListaT<cRegistros>* Lista_Registros;//¿Como agregar los registros?
 
 public:
 	cSistema(cFecha fecha);
@@ -18,5 +18,6 @@ public:
 	void operator+(cEquipos* nuevo);
 	void IniciarDia(cFecha Hoy);//Setea la fecha;
 	void TerminarDia();//Imprime la lista de equipos a los que se realizo mantenimiento en la fecha y su costo total, clasificando segun el tipo
+	cListaT <cEquipos>* getListaEquipos();
 };
 

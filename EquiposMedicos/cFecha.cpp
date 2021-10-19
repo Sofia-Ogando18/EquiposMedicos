@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "cFecha.h"
 
 cFecha::cFecha()
@@ -98,6 +99,11 @@ void cFecha::Cambio_Fecha()
 	}
 	this->fecha.tm_mday++;//Si es un dia entre mes, solo sumo.
 	return;
+}
+
+int cFecha::getMes()
+{
+	return fecha.tm_mon;
 }
 
 cFecha::~cFecha()
