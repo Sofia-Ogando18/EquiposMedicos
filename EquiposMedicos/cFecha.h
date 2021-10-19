@@ -18,6 +18,7 @@ public:
 	string tm_to_string_Fecha();
 	
 	void SetHoy();//cambia la fecha a fecha actual
+	void Cambio_Fecha();
 
 	~cFecha();
 };

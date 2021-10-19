@@ -1,10 +1,13 @@
 #pragma once
 #include "cEquipos.h"
 #include "cListaT.h"
+#include "cRegistros.h"
+
 class cSistema
 {
 	cListaT <cEquipos>* Lista_Equipos;
 	cFecha Hoy;
+	cListaT<cRegistro>* Lista_Registros;//¿Como agregar los registros?
 
 public:
 	cSistema(cFecha fecha);

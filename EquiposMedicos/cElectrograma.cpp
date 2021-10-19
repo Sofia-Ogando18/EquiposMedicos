@@ -15,12 +15,14 @@ void cElectrograma::EncenderAlarmas()
 	{
 	case 1:
 		Derivaciones_Bipolares = true;//andan mal
-case 2:
-	Derivaciones_Bipolares = true;
-	Derivaciones_Estandar = true;
-case 3:
-	Traficacion = true;
-	default:
+		break;
+	case 2:
+		Derivaciones_Bipolares = true;
+		Derivaciones_Estandar = true;
+		break;
+	case 3:
+		Traficacion = true;
+		default:
 		break;
 	}
 }

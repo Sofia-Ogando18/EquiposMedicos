@@ -24,7 +24,7 @@ void cEquipos::Verificado()
 {
 }
 
-void cEquipos::Imprimir()
+void cEquipos::Imprimir()//Agregar to_string
 {
 	cout << "\n Descripcion: " << Descripcion << " Dimensiones: " << Dimenciones << " Peso: " << to_string(Peso) << "\n Estado: " << Estados_to_string(Estado_Equipo) << "Precio: " << to_string(Costo) << "$";
 

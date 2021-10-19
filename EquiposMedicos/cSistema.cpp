@@ -2,8 +2,9 @@
 
 cSistema::cSistema(cFecha fecha)
 {
-	equipos = new cListaT <cEquipos>();
-	Hoy=fecha
+	Lista_Equipos = new cListaT <cEquipos>();
+	Hoy = fecha;
+	Lista_Registros = new cListaT<cRegistros>();
 }
 
 void cSistema::Historial()
@@ -31,7 +32,8 @@ cSistema::~cSistema()
 	delete equipos;
 }
 
-void operator+(cEquipos* nuevo)
+void cSistema::operator+(cEquipos* nuevo)
 {
 	this->Lista_Equipos->Agregar(nuevo);
 }
+

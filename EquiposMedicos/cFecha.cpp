@@ -50,6 +50,56 @@ void cFecha::SetHoy()
 	fecha.tm_min = aux->tm_min;
 }
 
+void cFecha::Cambio_Fecha()
+{
+	if (this->fecha.tm_mday == 31 && this->fecha.tm_mon == 12)//Cambio de año
+	{
+		this->fecha.tm_year++;
+		this->fecha.tm_mday = 1;
+		this->fecha.tm_mon = 1;
+		return;
+	}
+	if (this->fecha.tm_mon == 1 || this->fecha.tm_mon == 3 || this->fecha.tm_mon == 5
+		|| this->fecha.tm_mon == 7 || this->fecha.tm_mon == 8this->fecha.tm_mon == 10)
+	{
+		if (this->fecha.tm_mday == 31)
+		{
+			this->fecha.tm_mday == 1;
+			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
+			return;
+		}
+	}
+	if (this->fecha.tm_mon == 4 || this->fecha.tm_mon == 6 || this->fecha.tm_mon == 9 || this->fecha.tm_mon == 11)
+	{
+		if (this->fecha.tm_mday == 30)
+		{
+			this->fecha.tm_mday == 1;
+			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
+			return;
+		}
+	}
+	if (this->fecha.tm_year % 4 == 0 && this->fecha.tm_mon == 2)//Año bisiesto
+	{
+		if (this->fecha.tm_mday == 29)
+		{
+			this->fecha.tm_mday == 1;
+			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
+			return;
+		}
+	}
+	else if (this->fecha.tm_year % 4 != 0 && this->fecha.tm_mon == 2)
+	{
+		if (this->fecha.tm_mday == 28)
+		{
+			this->fecha.tm_mday == 1;
+			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
+			return;
+		}
+	}
+	this->fecha.tm_mday++;//Si es un dia entre mes, solo sumo.
+	return;
+}
+
 cFecha::~cFecha()
 {
 
