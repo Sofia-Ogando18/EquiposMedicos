@@ -1,6 +1,6 @@
 #include "cMesas_Anestesia.h"
 
-cMesas_Anestesia::cMesas_Anestesia(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas):cEquipos(dimenciones,estado, lugaractual,peso, fechas)
+cMesas_Anestesia::cMesas_Anestesia(string dimenciones, Estado estado, string lugaractual, float peso):cEquipos(dimenciones,estado, lugaractual,peso)
 {
 	Alarma_alta_Frec_Card = false;
 	Alarma_baja_Frec_Card = false;

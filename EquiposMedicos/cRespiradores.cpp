@@ -1,6 +1,6 @@
 #include "cRespiradores.h"
 
-cRespiradores::cRespiradores(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas):cEquipos(dimenciones, estado, lugaractual, peso,fechas)
+cRespiradores::cRespiradores(string dimenciones, Estado estado, string lugaractual, float peso):cEquipos(dimenciones, estado, lugaractual, peso)
 {
 	Alarma_alta_presion = false;
 	Alarma_baja_presion = false;

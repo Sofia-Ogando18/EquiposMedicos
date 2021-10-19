@@ -1,6 +1,6 @@
 #include "cElectrograma.h"
 
-cElectrograma::cElectrograma(string dimenciones, Estado estado, string lugaractual, float peso, cListaT<cFecha>* fechas):cEquipos(dimenciones,estado, lugaractual, peso,fechas)
+cElectrograma::cElectrograma(string dimenciones, Estado estado, string lugaractual, float peso):cEquipos(dimenciones,estado, lugaractual, peso)
 {
 	Derivaciones_Bipolares = false;
 	Derivaciones_Estandar = false;

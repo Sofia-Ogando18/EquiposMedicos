@@ -1,8 +1,9 @@
 #include "cSistema.h"
 
-cSistema::cSistema()
+cSistema::cSistema(cFecha fecha)
 {
 	equipos = new cListaT <cEquipos>();
+	Hoy=fecha
 }
 
 void cSistema::Historial()
@@ -28,4 +29,9 @@ void cSistema::BuscarEquipo(int codigo)
 cSistema::~cSistema()
 {
 	delete equipos;
+}
+
+void operator+(cEquipos* nuevo)
+{
+	this->Lista_Equipos->Agregar(nuevo);
 }
