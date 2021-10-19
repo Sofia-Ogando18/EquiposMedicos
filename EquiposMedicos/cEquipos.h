@@ -20,7 +20,7 @@ class cEquipos
 	cListaT<cFecha>* Calendario;//lista de las fechas en la que hay que hacer los mantenimientos
 	
 public:
-	cEquipos(string dimenciones,Estado estado,string lugaractual,float peso, cListaT<cFecha>* fechas);
+	cEquipos(string dimenciones,Estado estado,string lugaractual,float peso);
 	void Alerta();// salta si al finalizar el dia el equipo no se encuentra en el lugar donde se guarda
 	virtual void MantenimientoPreventivo()=0;
 	virtual void MantenimientoCorrectivos() = 0;

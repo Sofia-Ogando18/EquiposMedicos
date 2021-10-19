@@ -147,7 +147,7 @@
     <ClCompile Include="cRegistros.cpp" />
     <ClCompile Include="cRespiradores.cpp" />
     <ClCompile Include="cSistema.cpp" />
-    <ClCompile Include="EquiposMedicos.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cElectrograma.h" />

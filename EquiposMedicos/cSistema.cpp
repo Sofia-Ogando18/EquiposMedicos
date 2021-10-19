@@ -1,10 +1,12 @@
 #include "cSistema.h"
 
-cSistema::cSistema(cListaT<cEquipos>* equipos)
+cSistema::cSistema()
 {
-	if (equipos != NULL)
-		Lista_Equipos = equipos;
-	else equipos = new cListaT <cEquipos>();
+	equipos = new cListaT <cEquipos>();
+}
+
+void cSistema::Historial()
+{
 }
 
 string cSistema::RastrearEquipo(cEquipos* equipo)
@@ -21,4 +23,9 @@ void cSistema::BuscarEquipo(int codigo)
 	cEquipos* equipo_aux = NULL;
 	equipo_aux=Lista_Equipos->Buscar_por_ID(codigo);
 	equipo_aux->Imprimir();
+}
+
+cSistema::~cSistema()
+{
+	delete equipos;
 }
