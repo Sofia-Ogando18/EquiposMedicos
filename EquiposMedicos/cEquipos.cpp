@@ -1,7 +1,6 @@
 #include "cEquipos.h"
-string cEquipos::Lugar_Guardado = "Paseo Cadena, 176";
 
-cEquipos::cEquipos(string dimenciones, Estado estado, string lugaractual, float peso) :Codigo(Codigo + 1)
+cEquipos::cEquipos(string dimenciones, Estado estado, Lugar lugaractual, float peso) :Codigo(Contador++), Lugar_Guardado(Almacen)
 {
 	Dimenciones = dimenciones;
 	Estado_Equipo = estado;
@@ -12,6 +11,7 @@ cEquipos::cEquipos(string dimenciones, Estado estado, string lugaractual, float 
 	Calendario = new cListaT<cFecha>();
 	
 }
+unsigned int cEquipos::Contador = 1;
 
 void cEquipos::Alerta()
 {
@@ -33,4 +33,9 @@ void cEquipos::Imprimir()//Agregar to_string
 cEquipos::~cEquipos()
 {
 	delete Calendario;
+}
+
+void cEquipos::operator+(cFecha* nuevo)
+{
+	*Calendario + nuevo;
 }

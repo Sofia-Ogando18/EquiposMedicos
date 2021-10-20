@@ -21,3 +21,22 @@ string Estados_to_string(Estado estado)
 		break;
 	}
 }
+
+string Lugar_to_string(Lugar lugar)
+{
+	switch (lugar)
+	{
+	case Almacen:
+		return "Almacen";
+	case Quirofano:
+		return "Quirofano";
+	case Mantenimiento:
+		return "Mantenimiento";
+	case Terapia_Intensiva:
+		return "Terapia_Intensiva";
+	case Guardia:
+		return "Guardia";
+	default:
+		break;
+	}
+}

@@ -10,7 +10,7 @@ class cRespiradores :
     unsigned int Flujo_Configurado;
     unsigned int Flujo_Salida;
 public:
-    cRespiradores(string dimenciones, Estado estado, string lugaractual, float peso);
+    cRespiradores(string dimenciones, Estado estado, Lugar lugaractual, float peso);
     void MantenimientoPreventivo();
     void MantenimientoCorrectivos();
     void EncenderAlarmas();

@@ -51,6 +51,13 @@ void cFecha::SetHoy()
 	fecha.tm_min = aux->tm_min;
 }
 
+void cFecha::setFecha(int dia, int mes, int anio)
+{
+	fecha.tm_year = anio;
+	fecha.tm_mday = dia;
+	fecha.tm_mon = mes;
+}
+
 void cFecha::Cambio_Fecha()
 {
 	if (this->fecha.tm_mday == 31 && this->fecha.tm_mon == 12)//Cambio de año

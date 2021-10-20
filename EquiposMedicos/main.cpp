@@ -10,14 +10,44 @@ using namespace std;
 
 void verificado(cSistema* Sistema);
 
-int main()//¿Declarar un enum con los lugares posibles?
+int main()//¿Declarar un enum con los lugares posibles? Si
 {
     cFecha* fecha = new cFecha();
     cFecha Hoy = *fecha;
+    cFecha aux = *fecha;
     cSistema* Hospital = new cSistema(Hoy);
-    cEquipos* equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, "no se", 100.20);//Podriamos crear un struct para las dimensiones
-
+    cEquipos* equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, Quirofano, 100.20);
+    
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
     //Falta enlazar con los registros. ¿Donde estan? Estan en cSistema
+    //Cambiar lugares de string a un enum
 
     try
     {
@@ -46,27 +76,179 @@ int main()//¿Declarar un enum con los lugares posibles?
         cout << error->what() << endl;
         delete error;
     }
-    equipo = new cElectrograma("20x10x30", Estado::Standby, "Algun lugar", 50.20);
+    equipo = new cElectrograma("20x10x30", Estado::Standby, Almacen, 50.20);
+
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
+
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cRespiradores("32x10x30", Estado::Standby, "Lugar actual", 102, 10);
+    equipo = new cRespiradores("32x10x30", Estado::Standby, Terapia_Intensiva, 102, 10);
+
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
+
     *Hospital + equipo;//No deberia tirar error
 
-    equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, "no se", 100.20);
+    equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, Mantenimiento, 100.20);
+
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
+
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cElectrograma("20x10x30", Estado::Standby, "Algun lugar", 50.20);
+    equipo = new cElectrograma("20x10x30", Estado::Standby, Quirofano, 50.20);
+
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
+
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cRespiradores("32x10x30", Estado::Standby, "Lugar actual", 102, 10);
+    equipo = new cRespiradores("32x10x30", Estado::Standby, Almacen, 102, 10);
+
+    aux.setFecha(30, 11, 2021);
+    *equipo + aux;
+    aux.setFecha(29, 12, 2021);
+    *equipo + aux;
+    aux.setFecha(28, 1, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 2, 2022);
+    *equipo + aux;
+    aux.setFecha(20, 3, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 4, 2022);
+    *equipo + aux;
+    aux.setFecha(19, 5, 2022);
+    *equipo + aux;
+    aux.setFecha(18, 6, 2022);
+    *equipo + aux;
+    aux.setFecha(25, 7, 2022);
+    *equipo + aux;
+    aux.setFecha(29, 8, 2022);
+    *equipo + aux;
+    aux.setFecha(27, 9, 2022);
+    *equipo + aux;
+    aux.setFecha(26, 10, 2022);
+    *equipo + aux;
+    aux.setFecha(23, 11, 2022);
+    *equipo + aux;
+    aux.setFecha(21, 12, 2022);
+    *equipo + aux;
+
     *Hospital + equipo;//No deberia tirar error
     //Agrego 2 equipos de cada clase
      
     unsigned int cont = 0;
+
+    //Simulo unos dias
     int mes = Hoy.getMes();//Para tener el mes de referencia
     do
     {
         Hospital->IniciarDia(Hoy);
         if (mes != Hoy.getMes())
         {
-            verificado(Hospital);//Funcion que verifica los equipos
+            verificado(Hospital);//Funcion que verifica los equipos una vez al mes
             mes = Hoy.getMes();
         }
         Hospital->TerminarDia();
@@ -75,8 +257,9 @@ int main()//¿Declarar un enum con los lugares posibles?
     } while (cont < 365);//Solo es una referencia, podemos probarlo para X cantidad de dias
 
     
-    //Crear un metodo en equipo que cree una lista de fechas para mantenimiento
-    //¿Como iniciar las listas de fechas? ¿Hacer un método agregar o asignarle de a uno?
+    //Poner los metodos que pidieron en la consigna
+    //Agregar metodos Imprimir y to_string
+
     delete Hospital;
     return 0;
 }

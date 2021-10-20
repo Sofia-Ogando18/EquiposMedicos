@@ -5,6 +5,8 @@ cSistema::cSistema(cFecha fecha)
 	Lista_Equipos = new cListaT <cEquipos>();
 	Hoy = fecha;
 	Lista_Registros = new cListaT<cRegistros>();
+	Ganancia_Diaria = 0;
+	Ganancia_Total = 0;
 }
 
 void cSistema::Historial()
