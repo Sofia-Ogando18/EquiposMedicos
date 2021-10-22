@@ -11,8 +11,8 @@ class cMesas_Anestesia :
     float Volumen_flujo_fijado;
 public:
     cMesas_Anestesia(string dimenciones, Estado estado, Lugar lugaractual, float peso);
-    void MantenimientoPreventivo();
-    void MantenimientoCorrectivos();
+    cRegistros* MantenimientoPreventivo();
+    cRegistros* MantenimientoCorrectivos();
     void EncenderAlarmas();
     ~cMesas_Anestesia();
     void Imprimir();

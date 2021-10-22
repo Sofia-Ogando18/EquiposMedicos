@@ -11,7 +11,7 @@ class cSistema//Agregar algun metodo que agregue registros una vez realizados lo
 	float Ganancia_Total;
 	float Ganancia_Diaria;
 
-public://Agregar calcular Ganancia total
+public:
 	cSistema(cFecha fecha);
 	void Historial();//Imprime todos los registros
 	void Imprimir_Registros_Hoy();//Imprime todos los registros que se hayan hecho hoy
@@ -25,5 +25,11 @@ public://Agregar calcular Ganancia total
 	cListaT <cEquipos>* getListaEquipos();
 	void Imprimir();
 	string to_string();
+	void ImprimirAlerta();//Verifica que todos los equipos esten en su lugar de guardado e imprime a los que esten fuera de lugar
+	void RealizarMantenimiento_Pendiente();//Revisa los pendientes y si se cumplen las condiciones setea el mantenimiento a Correctivo y suma su monto a las ganancias
+	void RealizarMantenimiento_Preventivo();//Realiza los calendarios de mantenimiento de los equipos y si la fecha coincide, setea el 
+	//estado del equipo en Mantenimiento, cobra y agrega un registro. Si el equipo esta en Mantenimiento, lo pone en StandBy(Una parte se hace en cEquipo)(Revisa todos los equipos)
+	void Agregar_Registro();//Re
 };
 
+friend void Descomponer_Random(cSistema* Hospital);//Llama de forma aleatoria a EncenderAlarmas de un equipo

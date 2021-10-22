@@ -1,9 +1,9 @@
 #include "cRegistros.h"
 
-cRegistros::cRegistros(cFecha* fecha_mant, bool mantenimiento, float monto)
+cRegistros::cRegistros(cFecha* fecha_mant, Mantenimiento mantenimiento, float monto)
 {
 	Fecha_mantenimiento = fecha_mant;
-	Mantenimimento = mantenimiento;
+	tipo_Mantenimimento = mantenimiento;
 	Monto_Mantenimiento = monto;
 }
 

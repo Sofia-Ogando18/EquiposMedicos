@@ -9,8 +9,8 @@ class cElectrograma :
 
 public:
     cElectrograma(string dimenciones, Estado estado, Lugar lugaractual, float peso);
-    void MantenimientoPreventivo();
-    void MantenimientoCorrectivos();
+    cRegistros* MantenimientoPreventivo();
+    cRegistros* MantenimientoCorrectivos();
     void EncenderAlarmas();
     ~cElectrograma();
     void Imprimir();

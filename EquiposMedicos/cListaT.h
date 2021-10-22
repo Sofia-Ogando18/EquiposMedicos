@@ -8,10 +8,11 @@ class cListaT
 	T** lista;
 	unsigned int CA;
 	unsigned int TAM;
+	bool eliminar;
 	void Redimensionalizar();
 
 public:
-	cListaT(unsigned int TAM = N);
+	cListaT(bool eliminar=true, unsigned int TAM = N);
 	~cListaT();
 
 	void Agregar(T* nuevo);
@@ -47,9 +48,10 @@ inline void cListaT<T>::Redimensionalizar()
 }
 
 template<class T>
- inline cListaT<T>::cListaT(unsigned int TAM)
+ inline cListaT<T>::cListaT(bool eliminar, unsigned int TAM)
 {
 	this->TAM = TAM;
+	this->eliminar = eliminar;
 	CA = 0;
 	lista = new T * [TAM];
 	for (int i = 0; i < TAM; i++)
@@ -63,10 +65,13 @@ inline cListaT<T>::~cListaT()
 {
 	if (lista != NULL)
 	{
-		for (int i = 0; i < CA; i++)
+		if (eliminar)
 		{
-			if (lista[i] != NULL)
-				delete lista[i];
+			for (int i = 0; i < CA; i++)
+			{
+				if (lista[i] != NULL)
+					delete lista[i];
+			}
 		}
 		delete[] lista;
 	}
