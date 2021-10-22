@@ -15,6 +15,8 @@ public:
     void MantenimientoCorrectivos();
     void EncenderAlarmas();
     ~cMesas_Anestesia();
+    void Imprimir();
+    string to_string();
 };
 
 

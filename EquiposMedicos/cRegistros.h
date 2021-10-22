@@ -9,5 +9,7 @@ class cRegistros //lista de los mantenimientos hechos y sus costos
 public:
 	cRegistros(cFecha* fecha_mant,bool mantenimiento, float monto);
 	~cRegistros();
+	void Imprimir();
+	string to_string();
 };
 

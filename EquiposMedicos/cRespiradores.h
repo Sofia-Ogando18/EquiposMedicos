@@ -15,6 +15,7 @@ public:
     void MantenimientoCorrectivos();
     void EncenderAlarmas();
     ~cRespiradores();
-
+    void Imprimir();
+    string to_string();
 };
 

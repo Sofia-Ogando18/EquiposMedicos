@@ -27,9 +27,10 @@ public:
 	virtual void MantenimientoCorrectivos() = 0;//Cambia el enum a StandBy
 	virtual void EncenderAlarmas() = 0;//funcion alatoria que desconpone las maquinas para hacer el mantenimiento y cambia el enum a FueradeServicio
 	void Verificado();
-	string getUbicacion() { return Lugar_Actual; };
+	string getUbicacion() { return Lugar_to_string(Lugar_Actual); };
 	void Imprimir();
 	~cEquipos();
 	void operator+(cFecha* nuevo);
+	string to_string();
 };
 

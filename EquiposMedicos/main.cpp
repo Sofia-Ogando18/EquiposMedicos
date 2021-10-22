@@ -207,7 +207,7 @@ int main()//¿Declarar un enum con los lugares posibles? Si
     *Hospital + equipo;//No deberia tirar error
     equipo = new cRespiradores("32x10x30", Estado::Standby, Almacen, 102, 10);
 
-    aux.setFecha(30, 11, 2021);
+    aux.setFecha(30, 11, 2021);//Cambiar, le tengo que asignar un puntero
     *equipo + aux;
     aux.setFecha(29, 12, 2021);
     *equipo + aux;
@@ -258,7 +258,8 @@ int main()//¿Declarar un enum con los lugares posibles? Si
 
     
     //Poner los metodos que pidieron en la consigna
-    //Agregar metodos Imprimir y to_string
+    //Pueden quedar mantenimientos pendientes, ¿Hacer una lista con los pendientes y que despues se agreguen a la lista de los hechos?
+    //De ser asi, habria que agregar un estado en enum Estado que sea mantenimiento_pendiente
 
     delete Hospital;
     return 0;

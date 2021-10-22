@@ -12,7 +12,8 @@ public:
     void MantenimientoPreventivo();
     void MantenimientoCorrectivos();
     void EncenderAlarmas();
-     ~cElectrograma();
-
+    ~cElectrograma();
+    void Imprimir();
+    string to_string();
 };
 
