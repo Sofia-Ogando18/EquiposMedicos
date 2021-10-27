@@ -3,11 +3,11 @@
 #include "cListaT.h"
 #include "cRegistros.h"
 
-class cSistema//Agregar algun metodo que agregue registros una vez realizados los mantenimientos
+class cSistema
 {
 	cListaT <cEquipos>* Lista_Equipos;
 	cFecha Hoy;
-	cListaT<cRegistros>* Lista_Registros;//¿Como agregar los registros?
+	cListaT<cRegistros>* Lista_Registros;
 	float Ganancia_Total;
 	float Ganancia_Diaria;
 

@@ -195,7 +195,7 @@ int main()//¿Declarar un enum con los lugares posibles? Si
 
     
 
-
+    delete fecha1;//Lo pongo para probar si salta un error
     delete Hospital;
     return 0;
 }

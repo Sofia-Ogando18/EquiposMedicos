@@ -8,25 +8,28 @@ cEquipos::cEquipos(string dimenciones, Estado estado, Lugar lugaractual, float p
 	Peso = peso;
 	Descripcion = "Todavia no hay ";
 	Costo = 0.0;
-	Calendario = new cListaT<cFecha>();
+	Calendario = new cListaT<cFecha>(false);//Que no borre las fechas
 	
 }
 unsigned int cEquipos::Contador = 1;
 
-void cEquipos::Alerta()
+bool cEquipos::Alerta()
 {
 	if (Lugar_Actual != Lugar_Guardado) {
-		cout << "\n El equipo " << to_string(Codigo)<<" no esta en su lugar";
+		cout << "\n El equipo " << to_string(Codigo) << " no esta en su lugar";
+		return true;
 	}
+	else
+		return false;
 }
 
 void cEquipos::Verificado()
 {
 }
 
-void cEquipos::Imprimir()//Agregar to_string
+void cEquipos::Imprimir()
 {
-	cout << "\n Descripcion: " << Descripcion << " Dimensiones: " << Dimenciones << " Peso: " << to_string(Peso) << "\n Estado: " << Estados_to_string(Estado_Equipo) << "Precio: " << to_string(Costo) << "$";
+	cout << this->to_string() << endl;
 
 }
 
@@ -38,4 +41,11 @@ cEquipos::~cEquipos()
 void cEquipos::operator+(cFecha* nuevo)
 {
 	*Calendario + nuevo;
+}
+
+string cEquipos::to_string()
+{
+	string aux= "\nDescripcion: " + Descripcion + "\nDimensiones: " + Dimenciones + " \nPeso: " + std::to_string(Peso) + "\n Estado: " +
+		Estados_to_string(Estado_Equipo) + "\nPrecio: " + std::to_string(Costo) + "$";
+	return aux;
 }

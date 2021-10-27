@@ -22,6 +22,8 @@ public:
 	void Cambio_Fecha();
 	int getMes();
 
+	bool operator==(cFecha fecha);//Completar despues
+
 	~cFecha();
 };
 

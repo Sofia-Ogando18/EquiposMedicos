@@ -13,5 +13,9 @@ public:
 	~cRegistros();
 	void Imprimir();
 	string to_string();
+	cFecha getFecha() { return *Fecha_mantenimiento; };
+	Mantenimiento getMantenimiento() { return tipo_Mantenimimento; };
+	float getMonto() { return Monto_Mantenimiento; };
+	void setCorrectivo() { tipo_Mantenimimento = Correctivo; };//Setea el mantenimiento en correctivo
 };
 
