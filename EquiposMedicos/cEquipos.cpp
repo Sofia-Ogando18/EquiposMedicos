@@ -23,8 +23,27 @@ bool cEquipos::Alerta()
 		return false;
 }
 
-void cEquipos::Verificado()
+cRegistros* cEquipos::MantenimientoPreventivo(cFecha hoy)
 {
+	cRegistros* nuevo_Registro = NULL;//Lo inicializo en NULL
+	for (int i = 0; i < Calendario->getCA(); i++)
+	{
+		if ((*Calendario)[i]->setFecha() == hoy)
+		{
+			nuevo_Registro = new cRegistros(hoy, Preventivo, Costo);//Si hoy es una fecha de mantenimiento, creo un nuevo registro
+		}
+	}
+	return nuevo_Registro;//Si cree un nuevo registro, lo devuelve, si no, retorna NULL (Controla la excepcion en cSistema)
+}
+
+cRegistros* cEquipos::MantenimientoCorrectivos(cFecha hoy)
+{
+	cRegistros* nuevo_Registro = NULL;
+	if (this->Estado_Equipo == Fuera_de_Servicio)//Si esta fuera de servicio crea un nuevo registro
+	{
+		nuevo_Registro = new cRegistros(hoy, Correctivo_Pendiente, Costo);
+	}
+	return nuevo_Registro;//Retorna el nuevo registro. Si devuelve un NULL, lo controlo en cSistema
 }
 
 void cEquipos::Imprimir()

@@ -5,7 +5,7 @@
 using namespace std;
 enum class Estado {Ocupado,Standby,Fuera_de_Servicio,Mantenimiento};
 typedef enum{Almacen, Quirofano, Mantenimiento, Terapia_Intensiva, Guardia}Lugar;
-typedef enum{Preventivo, Correctivo, Correctivo_Pendiente}Mantenimiento;
+typedef enum{Preventivo, Correctivo, Correctivo_Pendiente}Mantenimientos;
 
 int FuncionRand(int min,int max);
 

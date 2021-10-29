@@ -11,9 +11,8 @@ class cRespiradores :
     unsigned int Flujo_Salida;
 public:
     cRespiradores(string dimenciones, Estado estado, Lugar lugaractual, float peso);
-    cRegistros* MantenimientoPreventivo();
-    cRegistros* MantenimientoCorrectivos();
     void EncenderAlarmas();
+    void Verificado();
     ~cRespiradores();
     void Imprimir();
     string to_string();

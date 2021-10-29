@@ -8,11 +8,10 @@ class cElectrograma :
     bool Traficacion;
 
 public:
-    cElectrograma(string dimenciones, Estado estado, Lugar lugaractual, float peso);
-    cRegistros* MantenimientoPreventivo();
-    cRegistros* MantenimientoCorrectivos();
+    cElectrograma(string dimenciones, Estado estado, Lugar lugaractual, float peso);//Todos se inician como false, que simboliza que funcionan correctamente
     void EncenderAlarmas();
     ~cElectrograma();
+    void Verificado();
     void Imprimir();
     string to_string();
 };

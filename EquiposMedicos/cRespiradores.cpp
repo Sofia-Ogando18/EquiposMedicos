@@ -18,3 +18,24 @@ void cRespiradores::EncenderAlarmas()
 	}
 	else { Alarma_baja_presion = true; }
 }
+
+void cRespiradores::Verificado()
+{
+}
+
+cRespiradores::~cRespiradores()
+{
+
+}
+
+void cRespiradores::Imprimir()
+{
+	cout << this->to_string() << endl;
+}
+
+string cRespiradores::to_string()
+{
+	string aux = (cEquipos*)this->to_string();//Despues agregarle el resto del texto
+
+	return aux;
+}
