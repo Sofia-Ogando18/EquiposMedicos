@@ -19,6 +19,7 @@ void cSistema::Historial()
 
 void cSistema::Imprimir_Registros_Hoy()
 {
+	//hacer con dynamic cast 
 	for (int j = 0; j < 3; j++)
 	{
 		for (int i = 0; i < Lista_Registros->getCA(); i++)
@@ -47,7 +48,7 @@ void cSistema::BuscarEquipo(int codigo)
 	equipo_aux=Lista_Equipos->Buscar_por_ID(codigo);
 	if(equipo_aux!=NULL)
 		equipo_aux->Imprimir();//Imprimo si lo encontro
-	return
+
 }
 
 cSistema::~cSistema()
@@ -92,7 +93,7 @@ void cSistema::Imprimir()
 string cSistema::to_string()
 {
 	string aux = "\nGanancia total: " + std::to_string(Ganancia_Total) + "\nGanancia diaria: " +
-		std::to_string(Ganancia_Diaria) + "\nHoy: "Hoy.tm_to_string_Fecha();
+		std::to_string(Ganancia_Diaria) + "\n Hoy:" + Hoy.tm_to_string_Fecha();
 	return aux;
 }
 
@@ -113,19 +114,19 @@ void cSistema::RealizarMantenimiento_Pendiente()
 	float monto = 0;
 	for (int i = 0; i < Lista_Registros->getCA(); i++)
 	{
-		if ((*Lista_Registros)[i]->getMantenimiento() == Correctivo_Pendiente)//Verifico que sea un mantenimiento correctivo pendiente
+		if ((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Correctivo_Pendiente)//Verifico que sea un mantenimiento correctivo pendiente
 		{
-			Monto += (*Lista_Registros)[i]->getMonto();
+			monto += (*Lista_Registros)[i]->getMonto();
 			cont++;
 		}
 	}
-	if (Monto > 2000 || cont>=5)
+	if (monto > 2000 || cont>=5)
 	{
 		Ganancia_Diaria = monto;
 		Ganancia_Total += monto;
 		for (int i = 0; i < Lista_Registros->getCA(); i++)
 		{
-			if ((*Lista_Registros)[i]->getMantenimiento() == Correctivo_Pendiente)//Los seteo en correctivo
+			if ((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Correctivo_Pendiente)//Los seteo en correctivo
 			{
 				(*Lista_Registros)[i]->setCorrectivo();
 			}

@@ -26,15 +26,15 @@ string Lugar_to_string(Lugar lugar)
 {
 	switch (lugar)
 	{
-	case Almacen:
+	case Lugar::Almacen:
 		return "Almacen";
-	case Quirofano:
+	case Lugar::Quirofano:
 		return "Quirofano";
-	case Mantenimiento:
+	case Lugar::Mantenimiento:
 		return "Mantenimiento";
-	case Terapia_Intensiva:
+	case Lugar::Terapia_Intensiva:
 		return "Terapia_Intensiva";
-	case Guardia:
+	case Lugar::Guardia:
 		return "Guardia";
 	default:
 		break;
