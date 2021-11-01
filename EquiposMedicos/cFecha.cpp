@@ -68,7 +68,7 @@ void cFecha::Cambio_Fecha()
 		return;
 	}
 	if (this->fecha.tm_mon == 1 || this->fecha.tm_mon == 3 || this->fecha.tm_mon == 5
-		|| this->fecha.tm_mon == 7 || this->fecha.tm_mon == 8this->fecha.tm_mon == 10)
+		|| this->fecha.tm_mon == 7 || this->fecha.tm_mon == this->fecha.tm_mon == 10)
 	{
 		if (this->fecha.tm_mday == 31)
 		{
@@ -111,6 +111,14 @@ void cFecha::Cambio_Fecha()
 int cFecha::getMes()
 {
 	return fecha.tm_mon;
+}
+
+bool cFecha::operator==(cFecha fecha_)
+{
+	tm aux = fecha_.getFecha();
+	if (fecha.tm_mday == aux.tm_mday && fecha.tm_mon == aux.tm_mon && fecha.tm_year == aux.tm_year)
+		return true;
+	else false;
 }
 
 cFecha::~cFecha()

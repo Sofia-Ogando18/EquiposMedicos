@@ -15,7 +15,7 @@ class cEquipos
 	string Descripcion;
 	Estado Estado_Equipo;
 	Lugar Lugar_Actual;
-	const Lugar Lugar_Guardado;//Puede ser un const
+	const Lugar Lugar_Guardado;
 	//string Nombre; que nombre?
 	float Peso;
 	string Dimenciones;// del tipo 3x5
@@ -34,6 +34,7 @@ public:
 	void Imprimir();
 	~cEquipos();
 	void operator+(cFecha* nuevo);
+	void setEstado(Estado estado) { Estado_Equipo = estado; };
 	string to_string();
 };
 

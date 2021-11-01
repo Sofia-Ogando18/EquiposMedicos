@@ -16,7 +16,7 @@ cElectrograma::~cElectrograma()
 void cElectrograma::Verificado()
 {
 	if (Derivaciones_Bipolares || Derivaciones_Estandar || Traficacion)//Si alguna es verdad, lo seteo en fuera de servicio
-		Estado_equipo = Fuera_de_Servicio;
+		this->setEstado(Estado::Fuera_de_Servicio);
 }
 
 
@@ -45,7 +45,7 @@ void cElectrograma::Imprimir()
 }
 string cElectrograma::to_string()
 {
-	string aux = (cEquipos*)this->to_string();//Fijarse si imprimimos los datos de las derivaciones
+	string aux = this->to_string();//Fijarse si imprimimos los datos de las derivaciones
 
 	return aux;
 }

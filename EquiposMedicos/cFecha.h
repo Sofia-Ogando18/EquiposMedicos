@@ -21,8 +21,9 @@ public:
 	void setFecha(int dia, int mes, int anio);
 	void Cambio_Fecha();
 	int getMes();
+	tm getFecha() { return fecha; };
 
-	bool operator==(cFecha fecha);//Completar despues
+	bool operator==(cFecha fecha_);//Completar despues
 
 	~cFecha();
 };
