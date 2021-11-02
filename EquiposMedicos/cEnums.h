@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 enum class Estado {Ocupado,Standby,Fuera_de_Servicio,Mantenimiento};
-typedef enum{Almacen, Quirofano, Mantenimiento, Terapia_Intensiva, Guardia}Lugar;
-typedef enum{Preventivo, Correctivo, Correctivo_Pendiente}Mantenimientos;
+enum class Lugar {Almacen, Quirofano, Mantenimiento, Terapia_Intensiva, Guardia};
+enum class Mantenimientos{Preventivo, Correctivo, Correctivo_Pendiente};
 
 int FuncionRand(int min,int max);
 
