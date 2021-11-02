@@ -19,18 +19,16 @@ void cSistema::Historial()
 
 void cSistema::Imprimir_Registros_Hoy()
 {
-	//hacer con dynamic cast 
-	for (int j = 0; j < 3; j++)
+	
+for (int i = 0; i < Lista_Registros->getCA(); i++){
+	if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
 	{
-		for (int i = 0; i < Lista_Registros->getCA(); i++)
-		{
-			if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
-			{
-				if((*Lista_Registros)[i]->getMantenimiento()==j)//Imprimo segun el tipo
-					(*Lista_Registros)[i]->Imprimir();
-			}
-		}
+		if((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Preventivo)//Imprimo segun el tipo
+				(*Lista_Registros)[i]->Imprimir();
 	}
+	
+}
+
 }
 
 string cSistema::RastrearEquipo(cEquipos* equipo)//Revisar
@@ -53,8 +51,8 @@ void cSistema::BuscarEquipo(int codigo)
 
 cSistema::~cSistema()
 {
-	delete Lista_Equipos;
-	delete Lista_Registros;
+	delete[] Lista_Equipos;
+	delete[] Lista_Registros;
 }
 
 void cSistema::operator+(cEquipos* nuevo)
@@ -139,7 +137,7 @@ void cSistema::RealizarMantenimiento_Preventivo()
 {
 }
 
-void cSistema::Agregar_Registro()
+void cSistema::Agregar_Registro(cEquipos*equipo)
 {
 }
 

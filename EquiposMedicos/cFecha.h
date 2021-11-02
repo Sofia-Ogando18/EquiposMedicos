@@ -5,6 +5,7 @@
 using namespace std;
 class cFecha
 {
+	
 	tm fecha;
 
 public:
@@ -12,11 +13,8 @@ public:
 	cFecha();
 	//constructor de inicio con dia mes, anio y la hora
 	cFecha(int d, int m, int a, int h, int min);
-
-	
 	void ImprimirFecha();
 	string tm_to_string_Fecha();
-	
 	void SetHoy();//cambia la fecha a fecha actual
 	void setFecha(int dia, int mes, int anio);
 	void Cambio_Fecha();

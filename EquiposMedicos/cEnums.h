@@ -12,3 +12,5 @@ int FuncionRand(int min,int max);
 string Estados_to_string(Estado estado);
 
 string Lugar_to_string(Lugar lugar);
+
+string Mantenimiento_to_string(Mantenimientos mantenimiento);

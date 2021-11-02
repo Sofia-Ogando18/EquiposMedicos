@@ -26,13 +26,13 @@ public:
 	bool Alerta();// salta si al finalizar el dia el equipo no se encuentra en el lugar donde se guarda
 
 	//La fecha la recibe de cSistema
-	cRegistros* MantenimientoPreventivo(cFecha hoy);//Si cumple las condiciones(fecha = calendario[i]), pone el equipo en Mantenimiento y devuelve un registro, si no, retorna un NULL
-	cRegistros* MantenimientoCorrectivos(cFecha hoy);//Si cumple las condiciones(fuera de servicio) devuelve un registro(con mantenimiento correctivo_pendiente), si no, retorna un NULL
+	cRegistros* MantenimientoPreventivo(cEquipos*equipo,cFecha hoy);//Si cumple las condiciones(fecha = calendario[i]), pone el equipo en Mantenimiento y devuelve un registro, si no, retorna un NULL
+	cRegistros* MantenimientoCorrectivos(cEquipos* equipo,cFecha hoy);//Si cumple las condiciones(fuera de servicio) devuelve un registro(con mantenimiento correctivo_pendiente), si no, retorna un NULL
 	virtual void EncenderAlarmas() = 0;//funcion aleatoria que desconpone las maquinas para hacer el mantenimiento y cambia el enum a FueradeServicio
 	virtual void Verificado()=0;//Comprueba que el equipo este funcionando bien. Si no lo hace, setea el estado en Fuera_de_servicio
 	string getUbicacion() { return Lugar_to_string(Lugar_Actual); };
 	void Imprimir();
-	~cEquipos();
+	virtual ~cEquipos();
 	void operator+(cFecha* nuevo);
 	void setEstado(Estado estado) { Estado_Equipo = estado; };
 	string to_string();

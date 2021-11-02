@@ -40,3 +40,21 @@ string Lugar_to_string(Lugar lugar)
 		break;
 	}
 }
+
+string Mantenimiento_to_string(Mantenimientos mantenimiento)
+{
+	switch (mantenimiento)
+	{
+	case Mantenimientos::Correctivo:
+		return "Correctivo";
+		break;
+	case Mantenimientos::Correctivo_Pendiente:
+		return "Correctivo_Pendiente";
+		break;
+	case Mantenimientos::Preventivo:
+		return "Preventivo";
+		break;
+	default:
+		break;
+	}
+}

@@ -96,7 +96,7 @@ int main()
 
     *Hospital + equipo;//No deberia tirar error
     equipo = new cRespiradores("32x10x30", Estado::Standby, Lugar::Terapia_Intensiva, 102, 10);
-
+    
     *equipo + fecha1;
     *equipo + fecha2;
     *equipo + fecha3;

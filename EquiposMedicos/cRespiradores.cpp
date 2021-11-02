@@ -35,7 +35,7 @@ void cRespiradores::Imprimir()
 
 string cRespiradores::to_string()
 {
-	string aux = (cEquipos*)this->to_string();//Despues agregarle el resto del texto
+	string aux = this->to_string();//Despues agregarle el resto del texto
 
 	return aux;
 }
