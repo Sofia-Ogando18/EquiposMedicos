@@ -15,8 +15,8 @@ public:
 	cSistema(cFecha fecha);
 	void Historial();//Imprime todos los registros
 	void Imprimir_Registros_Hoy();//Imprime todos los registros que se hayan hecho hoy
-	void Calcular_Ganacias()//Calcula las ganancias total y diaria
-	string RastrearEquipo(cEquipos*equipo);
+	void Calcular_Ganacias();//Calcula las ganancias total y diaria
+	string RastrearEquipo(cEquipos* equipo);
 	void BuscarEquipo(int codigo);//lo busca por codigo y despues lo imprime 
 	~cSistema();
 	void operator+(cEquipos* nuevo);

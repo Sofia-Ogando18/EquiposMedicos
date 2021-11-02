@@ -21,6 +21,8 @@ void cRespiradores::EncenderAlarmas()
 
 void cRespiradores::Verificado()
 {
+	if (Alarma_alta_presion || Alarma_baja_presion || Alarma_flujo)
+		Estado_equipo = Fuera_de_Servicio;
 }
 
 cRespiradores::~cRespiradores()

@@ -9,7 +9,7 @@ cMesas_Anestesia::cMesas_Anestesia(string dimenciones, Estado estado, Lugar luga
 	Volumen_flujo_fijado = 80;
 }
 
-void cMesas_Anestesia::EncenderAlarmas()
+void cMesas_Anestesia::EncenderAlarmas()//Fijarse cual es la condicion para encender las alarmas
 {
 	
 	int Valor = FuncionRand(1, 4);
@@ -34,9 +34,13 @@ cMesas_Anestesia::~cMesas_Anestesia()
 {
 }
 
-void cMesas_Anestesia::Verificado()
+void cMesas_Anestesia::Verificado()//Acordarse de apagar las alarmas cuando se hace mantenimiento correctivo y/o preventivo
 {
-
+	//¿Como se verifica el nivel de sueño?
+	if (Alarma_alta_Frec_Card || Alarma_baja_Frec_Card || Volumen_flujo >= Volumen_flujo_fijado + 10 || Volumen_flujo <= Volumen_flujo_fijado - 10)
+	{
+		Estado:equipo = Fuera_de_Servicio;
+	}
 
 }
 

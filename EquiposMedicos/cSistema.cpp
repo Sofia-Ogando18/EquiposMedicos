@@ -92,7 +92,7 @@ void cSistema::Imprimir()
 string cSistema::to_string()
 {
 	string aux = "\nGanancia total: " + std::to_string(Ganancia_Total) + "\nGanancia diaria: " +
-		std::to_string(Ganancia_Diaria) + "\nHoy: "Hoy.tm_to_string_Fecha();
+		std::to_string(Ganancia_Diaria) + "\nHoy: "+ Hoy.tm_to_string_Fecha();
 	return aux;
 }
 
