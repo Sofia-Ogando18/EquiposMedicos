@@ -36,4 +36,4 @@ public:
 	friend void Descomponer_Random(cSistema* Hospital);//Llama de forma aleatoria a EncenderAlarmas de un equipo
 };
 
-//friend void Descomponer_Random(cSistema* Hospital);//Llama de forma aleatoria a EncenderAlarmas de un equipo
+ void Descomponer_Random(cSistema* Hospital);//Llama de forma aleatoria a EncenderAlarmas de un equipo
