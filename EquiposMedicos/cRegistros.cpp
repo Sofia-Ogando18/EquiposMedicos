@@ -10,6 +10,8 @@ cRegistros::cRegistros(cEquipos* equipo, cFecha* fecha_mant, Mantenimientos mant
 
 cRegistros::~cRegistros()
 {
+	delete equipo;
+	delete Fecha_mantenimiento;
 }
 
 void cRegistros::Imprimir()
@@ -20,7 +22,7 @@ void cRegistros::Imprimir()
 string cRegistros::to_string()
 {
 	string registro;
-	registro = tipo_de_equipo() + " Fecha del mantenimiento:" + tm_to_string_Fecha() + "Mantenimiento: " + Mantenimiento_to_string(tipo_Mantenimimento)+"\n"+ "Monto: $"+std::to_string(Monto_Mantenimiento);
+	registro = tipo_de_equipo() + " Fecha del mantenimiento:" + Fecha_mantenimiento->tm_to_string_Fecha() + "Mantenimiento: " + Mantenimiento_to_string(tipo_Mantenimimento)+"\n"+ "Monto: $"+std::to_string(Monto_Mantenimiento);
 	return registro;
 }
 

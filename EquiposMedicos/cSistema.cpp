@@ -52,6 +52,7 @@ void cSistema::BuscarEquipo(int codigo)
 cSistema::~cSistema()
 {
 	delete[] Lista_Equipos;
+
 	delete[] Lista_Registros;
 }
 

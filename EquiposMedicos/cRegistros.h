@@ -11,11 +11,12 @@ class cRegistros //lista de los mantenimientos y sus costos
 	cFecha* Fecha_mantenimiento;
 	Mantenimientos tipo_Mantenimimento;
 	float Monto_Mantenimiento;
+	
 public:
 	cRegistros(cEquipos*equipo,cFecha* fecha_mant,Mantenimientos mantenimiento, float monto);
 	~cRegistros();
 	void Imprimir();
-	string to_string();
+	string to_string() {};
 	string tipo_de_equipo();
 	cFecha getFecha() { return *Fecha_mantenimiento; };
 	Mantenimientos getMantenimiento() { return tipo_Mantenimimento; };
