@@ -21,6 +21,7 @@ public:
 	void Calcular_Ganacias();//Calcula las ganancias total y diaria
 	string RastrearEquipo(cEquipos*equipo);
 	void BuscarEquipo(int codigo);//lo busca por codigo y despues lo imprime 
+	void Verificar_Equipo();//eligo un quipo al azar y lo verifico
 	~cSistema();
 	void operator+(cEquipos* nuevo);
 	void IniciarDia(cFecha Hoy);//Setea la fecha;

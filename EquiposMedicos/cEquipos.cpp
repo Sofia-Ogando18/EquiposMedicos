@@ -32,6 +32,7 @@ cRegistros* cEquipos::MantenimientoPreventivo(cEquipos* equipo,cFecha hoy)
 		if ((*Calendario)[i]->operator==(hoy)==true)
 		{
 			nuevo_Registro = new cRegistros(equipo,&hoy, Mantenimientos::Preventivo, Costo);//Si hoy es una fecha de mantenimiento, creo un nuevo registro
+			equipo->HacerMantenimientoPreventivo(equipo);
 		}
 	}
 	return nuevo_Registro;//Si cree un nuevo registro, lo devuelve, si no, retorna NULL (Controla la excepcion en cSistema)
@@ -44,6 +45,7 @@ cRegistros* cEquipos::MantenimientoCorrectivos(cEquipos* equipo,cFecha hoy)
 	if (this->Estado_Equipo == Estado::Fuera_de_Servicio)//Si esta fuera de servicio crea un nuevo registro
 	{
 		nuevo_Registro = new cRegistros(equipo,&hoy, Mantenimientos::Correctivo_Pendiente, Costo);
+		equipo->HacerMantenimientoCorrectivo(equipo);
 	}
 	return nuevo_Registro;//Retorna el nuevo registro. Si devuelve un NULL, lo controlo en cSistema
 }
@@ -56,7 +58,7 @@ void cEquipos::Imprimir()
 
 cEquipos::~cEquipos()
 {
-	delete Calendario;
+	delete[] Calendario;
 }
 
 void cEquipos::operator+(cFecha* nuevo)

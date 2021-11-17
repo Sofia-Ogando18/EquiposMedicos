@@ -31,6 +31,13 @@ for (int i = 0; i < Lista_Registros->getCA(); i++){
 
 }
 
+void cSistema::Calcular_Ganacias()
+{
+
+
+
+}
+
 string cSistema::RastrearEquipo(cEquipos* equipo)//Revisar
 {
 	cEquipos* equipo_aux=NULL;
@@ -46,7 +53,14 @@ void cSistema::BuscarEquipo(int codigo)
 	equipo_aux=Lista_Equipos->Buscar_por_ID(codigo);
 	if(equipo_aux!=NULL)
 		equipo_aux->Imprimir();//Imprimo si lo encontro
+}
 
+void cSistema::Verificar_Equipo()
+{
+	cEquipos* equipo;
+	int pos = FuncionRand(0, Lista_Equipos->getCA());
+	equipo=Lista_Equipos->Buscar_por_pos(pos);
+	equipo->Verificado(equipo);
 }
 
 cSistema::~cSistema()

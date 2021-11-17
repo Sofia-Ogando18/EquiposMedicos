@@ -19,8 +19,32 @@ void cRespiradores::EncenderAlarmas()
 	else { Alarma_baja_presion = true; }
 }
 
-void cRespiradores::Verificado()
+void cRespiradores::Verificado(cEquipos* equipo)
 {
+	//lamamos aca a EncenderAlarmas o en el main
+	
+	 HacerMantenimientoPreventivo(equipo);
+	
+}
+
+void cRespiradores::HacerMantenimientoPreventivo(cEquipos* equipo)
+{
+	if (Flujo_Salida == Flujo_Configurado && Alarma_alta_presion == false && Alarma_baja_presion == false) {
+		
+	}
+	else { HacerMantenimientoCorrectivo(equipo);
+	
+	};
+	
+}
+
+void cRespiradores::HacerMantenimientoCorrectivo(cEquipos* equipo)
+{
+
+	if (Flujo_Salida != Flujo_Configurado) { Flujo_Salida = Flujo_Configurado; }
+	else if (Alarma_alta_presion == true) { Alarma_alta_presion = false; }
+	else if (Alarma_baja_presion == true) { Alarma_baja_presion = false; };
+
 }
 
 cRespiradores::~cRespiradores()

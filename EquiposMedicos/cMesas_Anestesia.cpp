@@ -34,7 +34,7 @@ cMesas_Anestesia::~cMesas_Anestesia()
 {
 }
 
-void cMesas_Anestesia::Verificado()
+void cMesas_Anestesia::Verificado(cEquipos*equipo)
 {
 
 
@@ -50,4 +50,9 @@ string cMesas_Anestesia::to_string()
 	string aux = (cEquipos*)this->to_string();//Despues agregar el resto del texto
 
 	return aux;
+}
+
+void cMesas_Anestesia::HacerMantenimientoPreventivo(cEquipos* equipo)
+{
+
 }
