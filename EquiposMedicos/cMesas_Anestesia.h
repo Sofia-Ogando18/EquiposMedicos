@@ -13,11 +13,12 @@ public:
     cMesas_Anestesia(string dimenciones, Estado estado, Lugar lugaractual, float peso);
     void EncenderAlarmas();
     ~cMesas_Anestesia();
-    void Verificado(cEquipos*equipo);
+    void Verificado();
     void Imprimir();
     string to_string();
-    void HacerMantenimientoPreventivo(cEquipos* equipo);
-    void HacerMantenimientoCorrectivo(cEquipos* equipo);
+    void HacerMantenimientoPreventivo();
+    void HacerMantenimientoCorrectivo();
+
 };
 
 

@@ -13,6 +13,8 @@ public:
     ~cElectrograma();
     void Verificado();
     void Imprimir();
+    void HacerMantenimientoPreventivo();
+    void HacerMantenimientoCorrectivo();
     string to_string();
 };
 

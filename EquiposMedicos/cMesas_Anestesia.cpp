@@ -34,9 +34,9 @@ cMesas_Anestesia::~cMesas_Anestesia()
 {
 }
 
-void cMesas_Anestesia::Verificado(cEquipos*equipo)
+void cMesas_Anestesia::Verificado()
 {
-
+	HacerMantenimientoPreventivo();
 
 }
 
@@ -52,7 +52,18 @@ string cMesas_Anestesia::to_string()
 	return aux;
 }
 
-void cMesas_Anestesia::HacerMantenimientoPreventivo(cEquipos* equipo)
+void cMesas_Anestesia::HacerMantenimientoPreventivo()
 {
 
+	if (Volumen_flujo != Volumen_flujo_fijado || Alarma_alta_Frec_Card == true || Alarma_baja_Frec_Card == true || Nivel_suenio!=100) {
+		HacerMantenimientoCorrectivo();
+	};
+}
+
+void cMesas_Anestesia::HacerMantenimientoCorrectivo()
+{
+	if (Volumen_flujo != Volumen_flujo_fijado) { Volumen_flujo = Volumen_flujo_fijado; }
+	else if (Alarma_alta_Frec_Card == true) { Alarma_alta_Frec_Card = false; }
+	else if (Alarma_baja_Frec_Card == true) { Alarma_baja_Frec_Card = true; }
+	else { Nivel_suenio = 100; };
 }
