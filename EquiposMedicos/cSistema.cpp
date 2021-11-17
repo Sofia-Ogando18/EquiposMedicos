@@ -33,7 +33,14 @@ for (int i = 0; i < Lista_Registros->getCA(); i++){
 
 void cSistema::Calcular_Ganacias()
 {
+	for (int i = 0; i < Lista_Registros->getCA(); i++) {
+		if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
+		{
+			Ganancia_Diaria=(*Lista_Registros)[i]->getMonto();// las ganancias del dia
+			Ganancia_Total += Ganancia_Diaria;//acumulo las ganancias 
+		}
 
+	}
 
 
 }

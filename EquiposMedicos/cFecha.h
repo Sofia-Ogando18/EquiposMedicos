@@ -22,6 +22,8 @@ public:
 	tm getFecha() { return fecha; };
 
 	bool operator==(cFecha fecha_);//Completar despues
+	bool operator!=(cFecha fecha_);
+
 	~cFecha();
 };
 
