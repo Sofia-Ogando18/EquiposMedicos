@@ -3,7 +3,7 @@
 class cRespiradores :
     public cEquipos
 {
-
+    static unsigned int Contador;
     bool Alarma_alta_presion;
     bool Alarma_baja_presion;
     bool Alarma_flujo;
@@ -12,11 +12,11 @@ class cRespiradores :
 public:
     cRespiradores(string dimenciones, Estado estado, Lugar lugaractual, float peso);
     void EncenderAlarmas();
+    void ApagarAlarmas();
     void Verificado();
-    void HacerMantenimientoPreventivo();
-    void HacerMantenimientoCorrectivo();
     ~cRespiradores();
     void Imprimir();
     string to_string();
 };
+
 

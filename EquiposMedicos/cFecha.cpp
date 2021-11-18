@@ -37,7 +37,7 @@ void cFecha::ImprimirFecha()
 
 string cFecha::tm_to_string_Fecha()
 {
- return std::to_string(fecha.tm_mday) + " / " + std::to_string(fecha.tm_mon + 1) + " / " + std::to_string(fecha.tm_year + 1900);
+	return std::to_string(fecha.tm_mday) + " / " + std::to_string(fecha.tm_mon + 1) + " / " + std::to_string(fecha.tm_year + 1900);
 }
 
 void cFecha::SetHoy()
@@ -68,7 +68,7 @@ void cFecha::Cambio_Fecha()
 		return;
 	}
 	if (this->fecha.tm_mon == 1 || this->fecha.tm_mon == 3 || this->fecha.tm_mon == 5
-		|| this->fecha.tm_mon == 7 || this->fecha.tm_mon == this->fecha.tm_mon == 10)
+		|| this->fecha.tm_mon == 7 || this->fecha.tm_mon == 8 || this->fecha.tm_mon == 10)
 	{
 		if (this->fecha.tm_mday == 31)
 		{
@@ -113,16 +113,32 @@ int cFecha::getMes()
 	return fecha.tm_mon;
 }
 
-bool cFecha::operator==(cFecha fecha_)
+bool cFecha::operator==(cFecha fecha)
 {
-	tm aux = fecha_.getFecha();
-	if (fecha.tm_mday == aux.tm_mday && fecha.tm_mon == aux.tm_mon && fecha.tm_year == aux.tm_year)
-		return true;
-	else false;
+	if (this->fecha.tm_year == fecha.fecha.tm_year)
+	{
+		if (this->fecha.tm_mon == fecha.fecha.tm_mon)
+		{
+			if (this->fecha.tm_mday == fecha.fecha.tm_mday)
+				return true;//Si es el mismo año, mes y dia, retorno true
+		}
+	}
+	return false;//Si no cumplió alguna condición, retorna false
 }
-bool cFecha::operator!=(cFecha fecha_) { return !((((*this) == fecha_))); };
+
+cFecha cFecha::getFecha()
+{
+	return *this;
+}
+
 cFecha::~cFecha()
 {
 
-	
 }
+
+
+bool cFecha::operator!=(cFecha fecha_) 
+{
+	return !((((*this) == fecha_)));
+};
+

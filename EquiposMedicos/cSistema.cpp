@@ -19,62 +19,61 @@ void cSistema::Historial()
 
 void cSistema::Imprimir_Registros_Hoy()
 {
-	
-for (int i = 0; i < Lista_Registros->getCA(); i++){
-	if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
+	for (int j = 0; j < 3; j++)
 	{
-		if((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Preventivo)//Imprimo segun el tipo
-				(*Lista_Registros)[i]->Imprimir();
-	}
-	
-}
-
-}
-
-void cSistema::Calcular_Ganacias()
-{
-	for (int i = 0; i < Lista_Registros->getCA(); i++) {
-		if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
+		for (int i = 0; i < Lista_Registros->getCA(); i++)
 		{
-			Ganancia_Diaria=(*Lista_Registros)[i]->getMonto();// las ganancias del dia
-			Ganancia_Total += Ganancia_Diaria;//acumulo las ganancias 
+			if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
+			{
+				if (Mantenimiento_int((*Lista_Registros)[i]->getMantenimiento(), j))//Imprimo segun el tipo
+					(*Lista_Registros)[i]->Imprimir();
+			}
+		}
+	}
+}
+
+void cSistema::Calcular_Ganancias()
+{
+	float testigo = Ganancia_Diaria;
+	for (int i = 0; i < Lista_Registros->getCA(); i++)
+	{
+		if ((*Lista_Registros)[i]->getFecha() == Hoy)
+		{
+			if ((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Preventivo)//Solo considero los preventivos porque los correctivos los
+				Ganancia_Diaria += (*Lista_Registros)[i]->getMonto();//sumo en RealizarMantenimientoCorrectivo_Pendiente
 		}
 
 	}
-
-
+	if (testigo != Ganancia_Diaria)//Hubo un incremento
+	{
+		Ganancia_Total += Ganancia_Diaria;
+	}
 }
 
 string cSistema::RastrearEquipo(cEquipos* equipo)//Revisar
 {
-	cEquipos* equipo_aux=NULL;
+	cEquipos* equipo_aux = NULL;
 	if (equipo != NULL) {
-		equipo_aux=Lista_Equipos->Buscar_por_string(equipo->getUbicacion());
+		equipo_aux = Lista_Equipos->Buscar_por_string(equipo->getID());
 		return equipo_aux->getUbicacion();
 	}
+	else
+		throw new exception("Puntero NULL");
 }
 
-void cSistema::BuscarEquipo(int codigo)
+void cSistema::BuscarEquipo(string codigo)
 {
 	cEquipos* equipo_aux = NULL;
-	equipo_aux=Lista_Equipos->Buscar_por_ID(codigo);
-	if(equipo_aux!=NULL)
+	equipo_aux = Lista_Equipos->Buscar_por_string(codigo);
+	if (equipo_aux != NULL)
 		equipo_aux->Imprimir();//Imprimo si lo encontro
-}
-
-void cSistema::Verificar_Equipo()
-{
-	cEquipos* equipo;
-	int pos = FuncionRand(0, Lista_Equipos->getCA());
-	equipo=Lista_Equipos->Buscar_por_pos(pos);
-	equipo->Verificado(equipo);
+	return;
 }
 
 cSistema::~cSistema()
 {
-	delete[] Lista_Equipos;
-
-	delete[] Lista_Registros;
+	delete Lista_Equipos;
+	delete Lista_Registros;
 }
 
 void cSistema::operator+(cEquipos* nuevo)
@@ -90,7 +89,7 @@ void cSistema::IniciarDia(cFecha Hoy)
 void cSistema::TerminarDia()
 {
 	Imprimir_Registros_Hoy();
-	Calcular_Ganacias();
+	Calcular_Ganancias();
 	cout << "Ganancia total: " << Ganancia_Total << "\nGanancia diaria: " << Ganancia_Diaria << endl;
 	Ganancia_Diaria = 0;//Seteo la ganancia diaria de nuevo en 0
 }
@@ -113,7 +112,7 @@ void cSistema::Imprimir()
 string cSistema::to_string()
 {
 	string aux = "\nGanancia total: " + std::to_string(Ganancia_Total) + "\nGanancia diaria: " +
-		std::to_string(Ganancia_Diaria) + "\nHoy: "+ Hoy.tm_to_string_Fecha();
+		std::to_string(Ganancia_Diaria) + "\nHoy: " + Hoy.tm_to_string_Fecha();
 	return aux;
 }
 
@@ -140,14 +139,15 @@ void cSistema::RealizarMantenimiento_Pendiente()
 			cont++;
 		}
 	}
-	if (monto > 2000 || cont>=5)
+	if (monto > 2000 || cont >= 5)
 	{
 		Ganancia_Diaria = monto;
 		Ganancia_Total += monto;
 		for (int i = 0; i < Lista_Registros->getCA(); i++)
 		{
-			if ((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Correctivo_Pendiente)//Los seteo en correctivo
+			if ((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Correctivo_Pendiente)//Los seteo en correctivo(realizado) y lo pongo en standby
 			{
+				Lista_Equipos->Buscar_por_string((*Lista_Registros)[i]->getID_Equipo())->setEstado(Estado::Standby);
 				(*Lista_Registros)[i]->setCorrectivo();
 			}
 		}
@@ -157,9 +157,44 @@ void cSistema::RealizarMantenimiento_Pendiente()
 
 void cSistema::RealizarMantenimiento_Preventivo()
 {
+	cEquipos* aux = NULL;
+	for (int i = 0; i < Lista_Registros->getCA(); i++)
+	{
+		aux = Lista_Equipos->Buscar_por_string((*Lista_Registros)[i]->getID_Equipo());
+		if (aux->getEstado() == Estado::Mantenimiento)
+		{
+			aux->setEstado(Estado::Standby);
+		}
+		if ((*Lista_Registros)[i]->getFecha() == Hoy)
+		{
+			aux->setEstado(Estado::Mantenimiento);
+		}
+
+	}
 }
 
-void cSistema::Agregar_Registro(cEquipos*equipo)
+void cSistema::Agregar_Registro()
 {
+	for (int i = 0; i < Lista_Equipos->getCA(); i++)
+	{
+		(*Lista_Equipos)[i]->Verificado();
+		try//Agrego los mantenimientos preventivos
+		{
+			(*Lista_Registros) + (*Lista_Equipos)[i]->MantenimientoPreventivo(this->Hoy);
+		}
+		catch (exception* error)
+		{
+			delete error;//Si devuelve NULL es porque no hubo mantenimiento, entonces no hago nada y borro la excepcion
+		}
+		try//Agrego los mantenimientos correctivos pendientes
+		{
+			(*Lista_Registros) + (*Lista_Equipos)[i]->MantenimientoCorrectivos(this->Hoy);
+		}
+		catch (exception* error)
+		{
+			delete error;//Si devuelve NULL es porque no hubo mantenimiento, entonces no hago nada y borro la excepcion
+		}
+	}
 }
+
 

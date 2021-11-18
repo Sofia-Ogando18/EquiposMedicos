@@ -1,51 +1,46 @@
 #include "cEquipos.h"
 
-cEquipos::cEquipos(string dimenciones, Estado estado, Lugar lugaractual, float peso) :Codigo(Contador++), Lugar_Guardado(Lugar::Almacen)
+cEquipos::cEquipos(string dimenciones, Estado estado, Lugar lugaractual, float peso, string codigo) :Codigo(codigo), Lugar_Guardado(Lugar::Almacen)
 {
 	Dimenciones = dimenciones;
 	Estado_Equipo = estado;
 	Lugar_Actual = lugaractual;
 	Peso = peso;
 	Descripcion = "Todavia no hay ";
-	Costo = 0.0;
-	Calendario = new cListaT<cFecha>(false);//Que no borre las fechas
-	
+	Costo = 500.0;
+	Calendario = new cCalendario();
+
 }
-unsigned int cEquipos::Contador = 1;
 
 bool cEquipos::Alerta()
 {
 	if (Lugar_Actual != Lugar_Guardado) {
-		cout << "\n El equipo " << std::to_string(Codigo) << " no esta en su lugar";
+		cout << "\n El equipo " << Codigo << " no esta en su lugar";
 		return true;
 	}
 	else
 		return false;
 }
 
-cRegistros* cEquipos::MantenimientoPreventivo(cEquipos* equipo,cFecha hoy)
+cRegistros* cEquipos::MantenimientoPreventivo(cFecha hoy)
 {
 	cRegistros* nuevo_Registro = NULL;//Lo inicializo en NULL
-	for (int i = 0; i < Calendario->getCA(); i++)
+	if (Calendario->Verificar_Fecha(hoy))//Verifico el que la fecha coincida y elimino la fecha del calendario si esta en el
 	{
-		
-		if ((*Calendario)[i]->operator==(hoy)==true)
-		{
-			nuevo_Registro = new cRegistros(equipo,&hoy, Mantenimientos::Preventivo, Costo);//Si hoy es una fecha de mantenimiento, creo un nuevo registro
-			equipo->HacerMantenimientoPreventivo(equipo);
-		}
+		nuevo_Registro = new cRegistros(hoy, Mantenimientos::Preventivo, Costo, this->Codigo);//Si hoy es una fecha de mantenimiento, creo un nuevo registro
 	}
+
 	return nuevo_Registro;//Si cree un nuevo registro, lo devuelve, si no, retorna NULL (Controla la excepcion en cSistema)
 }
 
-cRegistros* cEquipos::MantenimientoCorrectivos(cEquipos* equipo,cFecha hoy)
+cRegistros* cEquipos::MantenimientoCorrectivos(cFecha hoy)
 {
 	cRegistros* nuevo_Registro = NULL;
-	
-	if (this->Estado_Equipo == Estado::Fuera_de_Servicio)//Si esta fuera de servicio crea un nuevo registro
+
+	if (this->Estado_Equipo == Estado::Fuera_de_Servicio)//Si esta fuera de servicio crea un nuevo registro y apaga las alarmas
 	{
-		nuevo_Registro = new cRegistros(equipo,&hoy, Mantenimientos::Correctivo_Pendiente, Costo);
-		equipo->HacerMantenimientoCorrectivo(equipo);
+		nuevo_Registro = new cRegistros(hoy, Mantenimientos::Correctivo_Pendiente, Costo, this->Codigo);
+		this->ApagarAlarmas();
 	}
 	return nuevo_Registro;//Retorna el nuevo registro. Si devuelve un NULL, lo controlo en cSistema
 }
@@ -58,18 +53,12 @@ void cEquipos::Imprimir()
 
 cEquipos::~cEquipos()
 {
-	delete[] Calendario;
-}
-
-void cEquipos::operator+(cFecha* nuevo)
-{
-	
-	*Calendario + nuevo;
+	delete Calendario;
 }
 
 string cEquipos::to_string()
 {
-	string aux= "\nDescripcion: " + Descripcion + "\nDimensiones: " + Dimenciones + " \nPeso: " + std::to_string(Peso) + "\n Estado: " +
+	string aux = "\nDescripcion: " + Descripcion + "\nDimensiones: " + Dimenciones + " \nPeso: " + std::to_string(Peso) + "\n Estado: " +
 		Estados_to_string(Estado_Equipo) + "\nPrecio: " + std::to_string(Costo) + "$";
 	return aux;
 }

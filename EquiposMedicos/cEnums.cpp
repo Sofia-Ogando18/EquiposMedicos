@@ -2,7 +2,7 @@
 
 int FuncionRand(int min, int max)
 {
-    return rand() % (max - min) + min;
+	return rand() % (max - min) + min;
 }
 
 string Estados_to_string(Estado estado)
@@ -47,14 +47,35 @@ string Mantenimiento_to_string(Mantenimientos mantenimiento)
 	{
 	case Mantenimientos::Correctivo:
 		return "Correctivo";
-		break;
 	case Mantenimientos::Correctivo_Pendiente:
-		return "Correctivo_Pendiente";
-		break;
+		return "Correctivo pendiente";
 	case Mantenimientos::Preventivo:
 		return "Preventivo";
-		break;
 	default:
 		break;
 	}
 }
+
+bool Mantenimiento_int(Mantenimientos mantenimiento, int num)
+{
+	switch (mantenimiento)
+	{
+	case Mantenimientos::Correctivo:
+		if (num == 1)//Si corresponde con el tipo de mantenimiento
+			return true;
+		else
+			return false;
+	case Mantenimientos::Preventivo:
+		if (num == 0)
+			return true;
+		else
+			return false;
+	case Mantenimientos::Correctivo_Pendiente:
+		if (num == 2)
+			return true;
+		else
+			return false;
+	}
+	return false;
+}
+

@@ -5,55 +5,25 @@
 #include "cElectrograma.h"
 #include "cEnums.h"
 #include <iostream>
-#define NDias 100
+#define NDias 10
 
 using namespace std;
 
 void verificado(cSistema* Sistema);
 void Descomponer_Random(cSistema* Hospital);
 
-int main()
+int main()//Falta algo que setee todo a los estados normales y apague las alarmas
 {
-    
-    cFecha* fecha1 = new cFecha(30, 11, 2021, 23, 33);
-    cFecha* fecha2 = new cFecha(29, 12, 2021, 21, 03);
-    cFecha* fecha3 = new cFecha(28, 1, 2022, 13, 24);
-    cFecha* fecha4 = new cFecha(18, 2, 2022, 15, 42);
-    cFecha* fecha5 = new cFecha(20, 3, 2022, 13, 04);
-    cFecha* fecha6 = new cFecha(29, 4, 2022, 18, 25);
-    cFecha* fecha7 = new cFecha(19, 5, 2022, 16, 20);
-    cFecha* fecha8 = new cFecha(18, 6, 2022, 22, 29);
-    cFecha* fecha9 = new cFecha(25, 7, 2022, 11, 55);
-    cFecha* fecha10 = new cFecha(29, 8, 2022, 13, 54);
-    cFecha* fecha11 = new cFecha(27, 9, 2022, 14, 13);
-    cFecha* fecha12 = new cFecha(26, 10, 2022, 20, 34);
-    cFecha* fecha13 = new cFecha(23, 11, 2022, 10, 06);
-    cFecha* fecha14 = new cFecha(21, 12, 2022, 12, 24); 
     cFecha Hoy;
     Hoy.SetHoy();
     cSistema* Hospital = new cSistema(Hoy);
     cEquipos* equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, Lugar::Quirofano, 100.20);
-    
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
 
     try
     {
         *Hospital + equipo;//Uso la sobrecarga
     }
-    catch(exception* error)
+    catch (exception* error)
     {
         cout << error->what() << endl;
         delete error;
@@ -77,102 +47,21 @@ int main()
         delete error;
     }
     equipo = new cElectrograma("20x10x30", Estado::Standby, Lugar::Almacen, 50.20);
-
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
-    
-
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cRespiradores("32x10x30", Estado::Standby, Lugar::Terapia_Intensiva, 102.10);
-    
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
-    
 
+    equipo = new cRespiradores("32x10x30", Estado::Standby, Lugar::Terapia_Intensiva, 102);
     *Hospital + equipo;//No deberia tirar error
 
     equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, Lugar::Mantenimiento, 100.20);
-
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
-
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cElectrograma("20x10x30", Estado::Standby,Lugar::Quirofano, 50.20);
 
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
-    
-
+    equipo = new cElectrograma("20x10x30", Estado::Standby, Lugar::Quirofano, 50.20);
     *Hospital + equipo;//No deberia tirar error
-    equipo = new cRespiradores("32x10x30", Estado::Standby,Lugar::Almacen, 102.10);
 
-    *equipo + fecha1;
-    *equipo + fecha2;
-    *equipo + fecha3;
-    *equipo + fecha4;
-    *equipo + fecha5;
-    *equipo + fecha6;
-    *equipo + fecha7;
-    *equipo + fecha8;
-    *equipo + fecha9;
-    *equipo + fecha10;
-    *equipo + fecha11;
-    *equipo + fecha12;
-    *equipo + fecha13;
-    *equipo + fecha14;
-    
-
+    equipo = new cRespiradores("32x10x30", Estado::Standby, Lugar::Almacen, 102);
     *Hospital + equipo;//No deberia tirar error
     //Agrego 2 equipos de cada clase
-     
+
     unsigned int cont = 0;
 
     //Simulo unos dias
@@ -180,37 +69,37 @@ int main()
     do
     {
         Hospital->IniciarDia(Hoy);
-        
+
         Descomponer_Random(Hospital);
         if (mes != Hoy.getMes())//Cada vez que cambio de mes
         {
             verificado(Hospital);//Funcion que verifica un equipo al azar una vez al mes
             mes = Hoy.getMes();
         }
-        Hospital->RealizarMantenimiento_Pendiente();
-        Hospital->RealizarMantenimiento_Preventivo();
-        Hospital->TerminarDia();
+        Hospital->Agregar_Registro();//Falta algo que mueva los equipos a lugares diferentes
+        Hospital->RealizarMantenimiento_Pendiente();//Falta metodo para verificar que se encuentre en su lugar al final del dia
+        Hospital->RealizarMantenimiento_Preventivo();//Acordarse de apagar las alarmas cuando se hace mantenimiento correctivo y/o preventivo
+        Hospital->TerminarDia();//Ver que hacer con el nivel de sueño de las mesas de anestesia
         cont++;
         Hoy.Cambio_Fecha();//Cambia la fecha al dia siguiente
     } while (cont < NDias);//Solo es una referencia, podemos probarlo para X cantidad de dias
 
-    
+    //El primer dia todo anda bien, despues ya no hace registros. Revisar
 
-    delete fecha1;//Lo pongo para probar si salta un error
+
     delete Hospital;
     return 0;
 }
 
 void verificado(cSistema* Sistema)
 {
-
     int random = FuncionRand(0, (Sistema->getListaEquipos())->getCA());
     (*(Sistema->getListaEquipos()))[random]->Verificado();
 }
 
 void Descomponer_Random(cSistema* Hospital)
 {
-    for (int i = 0; i < Hospital->getListaEquipos()->getCA(); i++)
+    for (int i = 0; i < (Hospital->getListaEquipos())->getCA(); i++)
     {
         (*(Hospital->getListaEquipos()))[i]->EncenderAlarmas();
     }

@@ -1,43 +1,29 @@
 #include "cRegistros.h"
 
-cRegistros::cRegistros(cEquipos* equipo, cFecha* fecha_mant, Mantenimientos mantenimiento, float monto)
+cRegistros::cRegistros(cFecha fecha_mant, Mantenimientos mantenimiento, float monto, string ID) :ID(ID + std::to_string(cont)), ID_Equipo(ID)
 {
 	Fecha_mantenimiento = fecha_mant;
-	tipo_Mantenimimento = mantenimiento;
+	tipo_Mantenimiento = mantenimiento;
 	Monto_Mantenimiento = monto;
-	this->equipo = equipo;
+	cont++;
 }
+unsigned int cRegistros::cont = 1;
 
 cRegistros::~cRegistros()
 {
-	delete equipo;
-	delete Fecha_mantenimiento;
+
 }
 
 void cRegistros::Imprimir()
 {
-	cout << to_string() << endl;
+	cout << this->to_string() << endl;
 }
 
 string cRegistros::to_string()
 {
-	string registro;
-	registro = tipo_de_equipo() + " Fecha del mantenimiento:" + Fecha_mantenimiento->tm_to_string_Fecha() + "Mantenimiento: " + Mantenimiento_to_string(tipo_Mantenimimento)+"\n"+ "Monto: $"+std::to_string(Monto_Mantenimiento);
-	return registro;
-}
-
-string cRegistros::tipo_de_equipo()
-{
-	cEquipos* aux=NULL;
-	aux = dynamic_cast<cElectrograma*>(equipo);
-	if (aux != NULL)
-		return "Electrograma";
-	aux = dynamic_cast<cRespiradores*>(equipo);
-	if (aux != NULL)
-		return "Respirador";
-	aux = dynamic_cast<cMesas_Anestesia*>(equipo);
-	if (aux != NULL)
-		return "Mesa de Anestesia";
+	string aux = "\nTipo de mantenimiento: " + Mantenimiento_to_string(tipo_Mantenimiento) + "\nFecha: " + Fecha_mantenimiento.tm_to_string_Fecha() +
+		"\nMonto: " + std::to_string(Monto_Mantenimiento) + "\nCodigo registro: " + ID;
+	return aux;
 }
 
 
