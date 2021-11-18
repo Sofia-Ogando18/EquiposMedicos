@@ -1,3 +1,6 @@
+#pragma once
+#include <string.h>
+#include <iostream>
 #include "cEnums.h"
 #include "cCalendario.h"
 #include "cListaT.h"
