@@ -13,6 +13,8 @@ public:
     cRespiradores(string dimenciones, Estado estado, Lugar lugaractual, float peso);
     void EncenderAlarmas();
     void Verificado();
+    void HacerMantenimientoPreventivo();
+    void HacerMantenimientoCorrectivo();
     ~cRespiradores();
     void Imprimir();
     string to_string();

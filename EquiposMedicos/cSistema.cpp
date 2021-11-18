@@ -19,18 +19,30 @@ void cSistema::Historial()
 
 void cSistema::Imprimir_Registros_Hoy()
 {
-	//hacer con dynamic cast 
-	for (int j = 0; j < 3; j++)
+	
+for (int i = 0; i < Lista_Registros->getCA(); i++){
+	if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
 	{
-		for (int i = 0; i < Lista_Registros->getCA(); i++)
-		{
-			if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
-			{
-				if((*Lista_Registros)[i]->getMantenimiento()==j)//Imprimo segun el tipo
-					(*Lista_Registros)[i]->Imprimir();
-			}
-		}
+		if((*Lista_Registros)[i]->getMantenimiento() == Mantenimientos::Preventivo)//Imprimo segun el tipo
+				(*Lista_Registros)[i]->Imprimir();
 	}
+	
+}
+
+}
+
+void cSistema::Calcular_Ganacias()
+{
+	for (int i = 0; i < Lista_Registros->getCA(); i++) {
+		if ((*Lista_Registros)[i]->getFecha() == this->Hoy)//Si las fechas coinciden
+		{
+			Ganancia_Diaria=(*Lista_Registros)[i]->getMonto();// las ganancias del dia
+			Ganancia_Total += Ganancia_Diaria;//acumulo las ganancias 
+		}
+
+	}
+
+
 }
 
 string cSistema::RastrearEquipo(cEquipos* equipo)//Revisar
@@ -48,13 +60,21 @@ void cSistema::BuscarEquipo(int codigo)
 	equipo_aux=Lista_Equipos->Buscar_por_ID(codigo);
 	if(equipo_aux!=NULL)
 		equipo_aux->Imprimir();//Imprimo si lo encontro
+}
 
+void cSistema::Verificar_Equipo()
+{
+	cEquipos* equipo;
+	int pos = FuncionRand(0, Lista_Equipos->getCA());
+	equipo=Lista_Equipos->Buscar_por_pos(pos);
+	equipo->Verificado(equipo);
 }
 
 cSistema::~cSistema()
 {
-	delete Lista_Equipos;
-	delete Lista_Registros;
+	delete[] Lista_Equipos;
+
+	delete[] Lista_Registros;
 }
 
 void cSistema::operator+(cEquipos* nuevo)
@@ -139,7 +159,7 @@ void cSistema::RealizarMantenimiento_Preventivo()
 {
 }
 
-void cSistema::Agregar_Registro()
+void cSistema::Agregar_Registro(cEquipos*equipo)
 {
 }
 

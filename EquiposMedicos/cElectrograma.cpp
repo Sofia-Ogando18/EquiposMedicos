@@ -15,8 +15,7 @@ cElectrograma::~cElectrograma()
 
 void cElectrograma::Verificado()
 {
-	if (Derivaciones_Bipolares || Derivaciones_Estandar || Traficacion)//Si alguna es verdad, lo seteo en fuera de servicio
-		this->setEstado(Estado::Fuera_de_Servicio);
+	HacerMantenimientoPreventivo();
 }
 
 
@@ -42,6 +41,21 @@ void cElectrograma::EncenderAlarmas()
 void cElectrograma::Imprimir()
 {
 	cout << this->to_string() << endl;
+}
+void cElectrograma::HacerMantenimientoPreventivo()
+{
+	if (Derivaciones_Bipolares || Derivaciones_Estandar || Traficacion)//Si alguna es verdad, lo seteo en fuera de servicio
+	{
+		this->setEstado(Estado::Fuera_de_Servicio);
+		HacerMantenimientoCorrectivo();
+	}
+
+}
+void cElectrograma::HacerMantenimientoCorrectivo()
+{
+
+
+
 }
 string cElectrograma::to_string()
 {

@@ -21,8 +21,29 @@ void cRespiradores::EncenderAlarmas()
 
 void cRespiradores::Verificado()
 {
-	if (Alarma_alta_presion || Alarma_baja_presion || Alarma_flujo)
-		Estado_equipo = Fuera_de_Servicio;
+	//lamamos aca a EncenderAlarmas o en el main?
+	
+	 HacerMantenimientoPreventivo();
+	
+}
+
+void cRespiradores::HacerMantenimientoPreventivo()
+{
+	if (Flujo_Salida != Flujo_Configurado && Alarma_alta_presion != false && Alarma_baja_presion != false) {
+		
+	
+		HacerMantenimientoCorrectivo();
+	};
+	
+}
+
+void cRespiradores::HacerMantenimientoCorrectivo()
+{
+
+	if (Flujo_Salida != Flujo_Configurado) { Flujo_Salida = Flujo_Configurado; }
+	else if (Alarma_alta_presion == true) { Alarma_alta_presion = false; }
+	else if (Alarma_baja_presion == true) { Alarma_baja_presion = false; };
+
 }
 
 cRespiradores::~cRespiradores()
@@ -37,7 +58,7 @@ void cRespiradores::Imprimir()
 
 string cRespiradores::to_string()
 {
-	string aux = (cEquipos*)this->to_string();//Despues agregarle el resto del texto
+	string aux = this->to_string();//Despues agregarle el resto del texto
 
 	return aux;
 }

@@ -120,7 +120,7 @@ bool cFecha::operator==(cFecha fecha_)
 		return true;
 	else false;
 }
-
+bool cFecha::operator!=(cFecha fecha_) { return !((((*this) == fecha_))); };
 cFecha::~cFecha()
 {
 

@@ -16,6 +16,9 @@ public:
     void Verificado();
     void Imprimir();
     string to_string();
+    void HacerMantenimientoPreventivo();
+    void HacerMantenimientoCorrectivo();
+
 };
 
 
