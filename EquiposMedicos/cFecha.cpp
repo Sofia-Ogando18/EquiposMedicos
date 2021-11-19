@@ -142,3 +142,66 @@ bool cFecha::operator!=(cFecha fecha_)
 	return !((((*this) == fecha_)));
 };
 
+bool cFecha::operator>(cFecha fecha)
+{
+	if (this->fecha.tm_year > fecha.fecha.tm_year)//El año es mayor
+	{
+		return true;
+	}
+	else if (this->fecha.tm_year == fecha.fecha.tm_year)
+	{
+		if (this->fecha.tm_mon > fecha.fecha.tm_mon)//El mes es mayor
+		{
+			return true;
+		}
+		else if (this->fecha.tm_mon == fecha.fecha.tm_mon)
+		{
+			if (this->fecha.tm_mday > fecha.fecha.tm_mday)//El dia es mayor
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+
+bool cFecha::operator<(cFecha fecha)
+{
+	if (this->fecha.tm_year < fecha.fecha.tm_year)//El año es menor
+	{
+		return true;
+	}
+	else if (this->fecha.tm_year == fecha.fecha.tm_year)
+	{
+		if (this->fecha.tm_mon < fecha.fecha.tm_mon)//El mes es menor
+		{
+			return true;
+		}
+		else if (this->fecha.tm_mon == fecha.fecha.tm_mon)
+		{
+			if (this->fecha.tm_mday < fecha.fecha.tm_mday)//El dia es menor
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+
+cFecha& cFecha::operator=(cFecha& F)
+{
+	fecha = F.fecha;
+	return F;
+}
+
+cFecha cFecha::operator++()
+{
+	this->Cambio_Fecha();
+	return *this;
+}

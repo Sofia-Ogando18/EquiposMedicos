@@ -17,6 +17,9 @@ public:
     ~cRespiradores();
     void Imprimir();
     string to_string();
+
+    friend ostream& operator<<(ostream& out, const cRespiradores& R);
+    friend istream& operator>>(istream& in, cRespiradores& R);
 };
 
 

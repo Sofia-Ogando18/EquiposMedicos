@@ -12,26 +12,23 @@ cMesas_Anestesia::cMesas_Anestesia(string dimenciones, Estado estado, Lugar luga
 }
 unsigned int cMesas_Anestesia::Contador = 1;
 
-void cMesas_Anestesia::EncenderAlarmas()//Fijarse cual es la condicion para encender las alarmas y definir ranfos de nivel de sueño aceptables
+void cMesas_Anestesia::EncenderAlarmas()
 {
 	if (this->Estado_Equipo == Estado::Fuera_de_Servicio || this->Estado_Equipo == Estado::Mantenimiento)//No enciendo alarmas si el equipo no esta operando
 		return;
-	int Valor = FuncionRand(1, 4);
-	switch (Valor)
+	Nivel_suenio = FuncionRand(50, 100);
+	if (Nivel_suenio <= 65)//Si el nivel de sueño es menor a 65, salta alarma
 	{
-	case 1:
-		Alarma_alta_Frec_Card = true;
-		Nivel_suenio = FuncionRand(50, 100);
-	case 2:
-		Volumen_flujo = FuncionRand(50, 100);
-		Nivel_suenio = FuncionRand(10, 100);
-	case 3:
-		Nivel_suenio = FuncionRand(10, 100);
-	case 4:
-		Volumen_flujo = FuncionRand(50, 100);
-	default:
-		break;
+		Alarma_alta_Frec_Card = true;//Esta despierto
+		Volumen_flujo = Volumen_flujo_fijado - Nivel_suenio % 20;
 	}
+	else if (Nivel_suenio >= 85)//Si el nivel de sueño es mayor a 85, salta alarma
+	{
+		Alarma_baja_Frec_Card = true;
+		Volumen_flujo = Volumen_flujo_fijado + Nivel_suenio % 20;
+	}
+	else//Si no, no hace nada
+		return;
 }
 
 void cMesas_Anestesia::ApagarAlarmas()
@@ -47,7 +44,6 @@ cMesas_Anestesia::~cMesas_Anestesia()
 
 void cMesas_Anestesia::Verificado()//Acordarse de apagar las alarmas cuando se hace mantenimiento correctivo y/o preventivo
 {
-	//¿Como se verifica el nivel de sueño?
 	if (Alarma_alta_Frec_Card || Alarma_baja_Frec_Card || Volumen_flujo >= Volumen_flujo_fijado + 10 || Volumen_flujo <= Volumen_flujo_fijado - 10)
 	{
 		this->Estado_Equipo = Estado::Fuera_de_Servicio;
@@ -62,7 +58,36 @@ void cMesas_Anestesia::Imprimir()
 
 string cMesas_Anestesia::to_string()
 {
-	string aux = ((cEquipos*)this)->to_string();//Despues agregar el resto del texto
+	string aux = ((cEquipos*)this)->to_string() + "\nNivel de suenio: " + std::to_string(Nivel_suenio) + "\nVolumen de flujo configurado:" +
+		std::to_string(Volumen_flujo_fijado) + "\nVolumen de flujo: " + std::to_string(Volumen_flujo);
 
 	return aux;
+}
+
+ostream& operator<<(ostream& out, const cMesas_Anestesia& M)
+{
+	out << (cEquipos&)M;
+	string alarma_alta, alarma_baja;
+	if (M.Alarma_alta_Frec_Card)
+		alarma_alta = "Encendida";
+	else
+		alarma_alta = "Apagada";
+	if (M.Alarma_baja_Frec_Card)
+		alarma_baja = "Encendida";
+	else
+		alarma_baja = "Apagada";
+	out << "\nNivel de suenio: " << std::to_string(M.Nivel_suenio) << "\nVolumen de flujo configurado:" << std::to_string(M.Volumen_flujo_fijado) <<
+		"\nVolumen de flujo: " << std::to_string(M.Volumen_flujo) << "\nAlarma de baja frecuencia cardiaca: " << alarma_baja <<
+		"\nAlarma de alta frecuencia cardiaca: " << alarma_alta;
+	return out;
+}
+
+istream& operator>>(istream& in, cMesas_Anestesia& M)
+{
+	in >> (cEquipos&)M;
+	float volumen;
+	cout << "\nVolumen de flujo a configurar: " << endl;
+	in >> volumen;
+	M.Volumen_flujo_fijado = volumen;
+	return in;
 }

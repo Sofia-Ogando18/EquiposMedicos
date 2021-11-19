@@ -5,12 +5,12 @@
 #include "cElectrograma.h"
 #include "cEnums.h"
 #include <iostream>
-#define NDias 10
+#define NDias 30
 
 using namespace std;
 
 void verificado(cSistema* Sistema);
-void Descomponer_Random(cSistema* Hospital);
+ostream& operator<<(ostream& out, const cEquipos& E);
 
 int main()//Falta algo que setee todo a los estados normales y apague las alarmas
 {
@@ -18,7 +18,10 @@ int main()//Falta algo que setee todo a los estados normales y apague las alarma
     Hoy.SetHoy();
     cSistema* Hospital = new cSistema(Hoy);
     cEquipos* equipo = new cMesas_Anestesia("22x23x13", Estado::Standby, Lugar::Quirofano, 100.20);
+    cFecha aux = Hoy;
 
+    //Sobrecarga operator=
+    cout << aux.tm_to_string_Fecha() << endl;
     try
     {
         *Hospital + equipo;//Uso la sobrecarga
@@ -60,6 +63,9 @@ int main()//Falta algo que setee todo a los estados normales y apague las alarma
 
     equipo = new cRespiradores("32x10x30", Estado::Standby, Lugar::Almacen, 102);
     *Hospital + equipo;//No deberia tirar error
+
+    cout << *(cRespiradores*)equipo << endl;
+    cin >> *(cRespiradores*)equipo;
     //Agrego 2 equipos de cada clase
 
     unsigned int cont = 0;
@@ -76,15 +82,14 @@ int main()//Falta algo que setee todo a los estados normales y apague las alarma
             verificado(Hospital);//Funcion que verifica un equipo al azar una vez al mes
             mes = Hoy.getMes();
         }
-        Hospital->Agregar_Registro();//Falta algo que mueva los equipos a lugares diferentes
-        Hospital->RealizarMantenimiento_Pendiente();//Falta metodo para verificar que se encuentre en su lugar al final del dia
-        Hospital->RealizarMantenimiento_Preventivo();//Acordarse de apagar las alarmas cuando se hace mantenimiento correctivo y/o preventivo
+        Hospital->Agregar_Registro();
+        Hospital->RealizarMantenimiento_Pendiente();
+        Hospital->RealizarMantenimiento_Preventivo();
         Hospital->TerminarDia();//Ver que hacer con el nivel de sueño de las mesas de anestesia
         cont++;
-        Hoy.Cambio_Fecha();//Cambia la fecha al dia siguiente
+        ++Hoy;//Cambia la fecha al dia siguiente
     } while (cont < NDias);//Solo es una referencia, podemos probarlo para X cantidad de dias
 
-    //El primer dia todo anda bien, despues ya no hace registros. Revisar
 
 
     delete Hospital;
@@ -97,11 +102,9 @@ void verificado(cSistema* Sistema)
     (*(Sistema->getListaEquipos()))[random]->Verificado();
 }
 
-void Descomponer_Random(cSistema* Hospital)
+ostream& operator<<(ostream& out, const cEquipos& E)
 {
-    for (int i = 0; i < (Hospital->getListaEquipos())->getCA(); i++)
-    {
-        (*(Hospital->getListaEquipos()))[i]->EncenderAlarmas();
-    }
-
+    out << "\nDescripcion: " << E.Descripcion << "\nDimensiones: " << E.Dimenciones << " \nPeso: " << std::to_string(E.Peso) << "\n Estado: " <<
+        Estados_to_string(E.Estado_Equipo) << "\nPrecio: " << std::to_string(E.Costo) << "$" << endl;
+    return out;
 }

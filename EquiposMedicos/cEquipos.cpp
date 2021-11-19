@@ -15,7 +15,7 @@ cEquipos::cEquipos(string dimenciones, Estado estado, Lugar lugaractual, float p
 bool cEquipos::Alerta()
 {
 	if (Lugar_Actual != Lugar_Guardado) {
-		cout << "\n El equipo " << Codigo << " no esta en su lugar";
+		cout << "\n El equipo " << Codigo << " no esta en su lugar\n";
 		return true;
 	}
 	else
@@ -61,4 +61,45 @@ string cEquipos::to_string()
 	string aux = "\nDescripcion: " + Descripcion + "\nDimensiones: " + Dimenciones + " \nPeso: " + std::to_string(Peso) + "\n Estado: " +
 		Estados_to_string(Estado_Equipo) + "\nPrecio: " + std::to_string(Costo) + "$";
 	return aux;
+}
+void cEquipos::Mover()
+{
+	if (this->Lugar_Actual == Lugar::Mantenimiento)//Si esta en mantenimiento, no lo muevo
+		return;
+	unsigned int random = FuncionRand(0, 3);
+	switch (random)
+	{
+	case 0:
+		Lugar_Actual = Lugar::Guardia;
+		break;
+	case 1:
+		Lugar_Actual = Lugar::Quirofano;
+		break;
+	case 2:
+		Lugar_Actual = Lugar::Terapia_Intensiva;
+		break;
+	default:
+		Lugar_Actual = Lugar::Almacen;
+	}
+	return;
+}
+
+void cEquipos::Guardar()
+{
+	Lugar_Actual = Lugar_Guardado;
+	return;
+}
+
+
+istream& operator>>(istream& in, cEquipos& E)
+{
+	float precio;
+	string descripcion;
+	cout << "Costo de mantenimiento: " << endl;
+	in >> precio;
+	E.Costo = precio;
+	cout << "Descripcion" << endl;
+	in >> descripcion;
+	E.Descripcion = descripcion;
+	return in;
 }

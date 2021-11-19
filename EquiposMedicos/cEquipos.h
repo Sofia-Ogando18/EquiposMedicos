@@ -38,4 +38,10 @@ public:
 	string getID() { return Codigo; };
 	void setEstado(Estado estado) { Estado_Equipo = estado; };
 	Estado getEstado() { return Estado_Equipo; };
+
+	void Mover();
+	void Guardar();
+
+	friend ostream& operator<<(ostream& out, const cEquipos& E);
+	friend istream& operator>>(istream& in, cEquipos& E);
 };

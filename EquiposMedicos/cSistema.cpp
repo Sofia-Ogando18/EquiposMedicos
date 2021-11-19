@@ -88,8 +88,10 @@ void cSistema::IniciarDia(cFecha Hoy)
 
 void cSistema::TerminarDia()
 {
+	this->MoveryGuardarEquipos();//Guardo los equipos
 	Imprimir_Registros_Hoy();
 	Calcular_Ganancias();
+	this->VerificarGuardado();//Verifico si uno quedo fuera de lugar
 	cout << "Ganancia total: " << Ganancia_Total << "\nGanancia diaria: " << Ganancia_Diaria << endl;
 	Ganancia_Diaria = 0;//Seteo la ganancia diaria de nuevo en 0
 }
@@ -197,4 +199,35 @@ void cSistema::Agregar_Registro()
 	}
 }
 
+void cSistema::MoveryGuardarEquipos()
+{
+	unsigned int random = FuncionRand(0, this->Lista_Equipos->getCA() + 1);
+	if (random >= this->Lista_Equipos->getCA())//Si el random es mayor o igual a CA, no hago nada
+		return;
+	else
+	{
+		(*(this->Lista_Equipos))[random]->Mover();//Muevo el equipo a una posición random
+	}//En lugar de moverlos todos y volverlos a su lugar, muevo solo uno y digo que no lo devolvi a su lugar
+}
 
+void cSistema::VerificarGuardado()
+{
+	for (int i = 0; i < this->Lista_Equipos->getCA(); i++)
+	{
+		if ((*(this->Lista_Equipos))[i]->Alerta())//Si el equipo no esta en su lugar de guardado imprimo una alerta y guardo el equipo
+		{
+			(*(this->Lista_Equipos))[i]->Guardar();
+			break;//Como solo va a haber uno por vez, salgo del for
+		}
+	}
+	return;
+}
+
+void Descomponer_Random(cSistema* Hospital)
+{
+	for (int i = 0; i < (Hospital->getListaEquipos())->getCA(); i++)
+	{
+		(*(Hospital->getListaEquipos()))[i]->EncenderAlarmas();
+	}
+
+}

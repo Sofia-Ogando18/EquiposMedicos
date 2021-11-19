@@ -28,5 +28,11 @@ public:
 	bool operator!=(cFecha fecha_);
 	cFecha getFecha();
 
+	bool operator>(cFecha fecha);
+	bool operator<(cFecha fecha);
+
+	cFecha& operator=(cFecha& F);
+	cFecha operator++();
+
 	~cFecha();
 };

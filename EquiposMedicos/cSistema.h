@@ -30,6 +30,8 @@ public:
 	void RealizarMantenimiento_Preventivo();//Revisa los calendarios de mantenimiento de los equipos y si la fecha coincide, setea el 
 	//estado del equipo en Mantenimiento, cobra y agrega un registro. Si el equipo esta en Mantenimiento, lo pone en StandBy(Una parte se hace en cEquipo)(Revisa todos los equipos)
 	void Agregar_Registro();
+	void MoveryGuardarEquipos();
+	void VerificarGuardado();
 };
 
 void Descomponer_Random(cSistema* Hospital);//Llama de forma aleatoria a EncenderAlarmas de un equipo

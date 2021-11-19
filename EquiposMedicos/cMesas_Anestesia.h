@@ -6,7 +6,7 @@ class cMesas_Anestesia :
     static unsigned int Contador;
     bool Alarma_alta_Frec_Card;
     bool Alarma_baja_Frec_Card;
-    int Nivel_suenio;//Investigar
+    int Nivel_suenio;
     int Volumen_flujo;
     float Volumen_flujo_fijado;
 public:
@@ -17,6 +17,9 @@ public:
     void Verificado();
     void Imprimir();
     string to_string();
+
+    friend ostream& operator<<(ostream& out, const cMesas_Anestesia& M);
+    friend istream& operator>>(istream& in, cMesas_Anestesia& M);
 };
 
 
