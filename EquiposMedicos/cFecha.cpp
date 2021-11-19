@@ -72,7 +72,7 @@ void cFecha::Cambio_Fecha()
 	{
 		if (this->fecha.tm_mday == 31)
 		{
-			this->fecha.tm_mday == 1;
+			this->fecha.tm_mday = 1;
 			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
 			return;
 		}
@@ -81,7 +81,7 @@ void cFecha::Cambio_Fecha()
 	{
 		if (this->fecha.tm_mday == 30)
 		{
-			this->fecha.tm_mday == 1;
+			this->fecha.tm_mday = 1;
 			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
 			return;
 		}
@@ -90,7 +90,7 @@ void cFecha::Cambio_Fecha()
 	{
 		if (this->fecha.tm_mday == 29)
 		{
-			this->fecha.tm_mday == 1;
+			this->fecha.tm_mday = 1;
 			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
 			return;
 		}
@@ -99,7 +99,7 @@ void cFecha::Cambio_Fecha()
 	{
 		if (this->fecha.tm_mday == 28)
 		{
-			this->fecha.tm_mday == 1;
+			this->fecha.tm_mday = 1;
 			this->fecha.tm_mon++;//Cambio de mes y lo reseteo
 			return;
 		}

@@ -85,7 +85,7 @@ int main()//Falta algo que setee todo a los estados normales y apague las alarma
         Hospital->Agregar_Registro();
         Hospital->RealizarMantenimiento_Pendiente();
         Hospital->RealizarMantenimiento_Preventivo();
-        Hospital->TerminarDia();//Ver que hacer con el nivel de sueño de las mesas de anestesia
+        Hospital->TerminarDia();
         cont++;
         ++Hoy;//Cambia la fecha al dia siguiente
     } while (cont < NDias);//Solo es una referencia, podemos probarlo para X cantidad de dias
